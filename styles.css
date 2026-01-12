@@ -1,0 +1,14 @@
+#banner {
+    width: 1200px;
+    height: 250px;
+}
+
+#container {
+    max-width: 1200px;
+    min-width: 800px;
+    margin: auto;
+}
+
+ul {
+    list-style-type: none;
+}
