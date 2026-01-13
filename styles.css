@@ -12,3 +12,44 @@
 ul {
     list-style-type: none;
 }
+
+ul li a {
+    font-family: "Source Sans 3";
+    text-decoration: none;
+}
+
+main h1, main h2, footer {
+    font-family: "Source Sans 3";
+}
+
+header, header h1, header h2 {
+    font-family: "Pixelify Sans";
+    font-weight: 550;
+    color: rgb(40, 40, 40);
+}
+
+#char-lcd {
+    background-color: #CBD6D1;
+    border: black 5px solid;
+    padding: 5px;
+    box-sizing: border-box;
+    margin: auto;
+}
+
+footer {
+    background-color: rgb(126, 65, 50) ;
+    padding: 10px;
+    margin: auto;
+    text-align: center;
+}
+
+#cabinet {
+    background-color: rgb(126, 65, 50);
+    padding: 25px;
+}
+
+.shelf {
+    background-color: rgb(79, 33, 33);
+    padding: 20px;
+    margin-block: 40px;
+}
