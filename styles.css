@@ -33,7 +33,6 @@ header, header h1, header h2 {
     border: black 5px solid;
     padding: 5px;
     box-sizing: border-box;
-    margin: auto;
 }
 
 footer {
@@ -46,6 +45,7 @@ footer {
 #cabinet {
     background-color: rgb(126, 65, 50);
     padding: 25px;
+    margin: auto;
 }
 
 .shelf {
