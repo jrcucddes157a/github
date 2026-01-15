@@ -1,5 +1,5 @@
 body {
-    background-image: url();
+    background-color: rgb(52, 47, 44);
 }
 
 header {
@@ -9,17 +9,14 @@ header {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
+    text-align: center;
 }
 
 header h1, header h2 {
     display: inline;
     text-transform: uppercase;
-    text-align: center;
-    margin-right: 40px;
-}
-
-header h1 {
-    margin-left: 5rem;
+    position: relative;
+    top: -4px;
 }
 
 header h2 {
@@ -30,6 +27,31 @@ header h2 {
     max-width: 1200px;
     min-width: 800px;
     margin: auto;
+}
+
+#banner {
+    background-color: silver;
+    display: flex;
+    justify-content: space-between;
+    padding: 15px;
+    box-sizing: content-box;
+}
+
+#volume {
+    width: 141px;
+    height: 96px;
+    position: relative;
+    top: 13px;
+}
+
+#casette {
+    width: auto;
+    height: 120px ;
+}
+
+#controls {
+    position: relative;
+    top: 10px;
 }
 
 ul {
@@ -72,14 +94,13 @@ main section h2 {
 header, header h1, header h2 {
     font-family: "Pixelify Sans";
     font-weight: 550;
-    color: rgb(40, 40, 40);
+    color: white;
 }
 
 #char-lcd {
-    background-color: #CBD6D1;
-    border: black 5px solid;
-    padding: 5px;
-    box-sizing: border-box;
+    background-color: #2332d0;
+    border: black 10px solid;
+    box-sizing: content-box;
     justify-self: flex-end;
     overflow: hidden;
 }
