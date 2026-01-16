@@ -1,0 +1,65 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!--Normalize CSS-->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css" rel="stylesheet">
+    <!--Style Sheet-->
+    <link rel="stylesheet" href="exp1styles.css">
+    <title>Experiment 1 Javascript</title>
+</head>
+<body>
+    <h1>Experiment 1</h1>
+    <h2>Use the following commands to open the console and see the experiment!</h2>
+    <h3>Windows: CTRL + ALT + J</h3>
+    <h3>MacOS: CMD + Option + J</h3>
+
+    <script>
+        var userPrompt = prompt("Wanna play some blackjack?", "").toLowerCase()
+        var blackjackCards = 0
+        var houseCards = 0
+        
+        // Initial Response to userPrompt
+        if (userPrompt == "no") {
+            console.log("Well aren't you a stinker! >:(")
+        } 
+        else if (userPrompt == "yes") {
+            blackjackCards = Math.floor((Math.random() * 13)+1)
+
+            houseCards = Math.floor((Math.random() * 13) + 1)
+            houseCards = houseCards + Math.floor((Math.random() * 13) + 1)
+
+            console.log(`Your Cards: ${blackjackCards}`)
+            console.log (`House Cards: ${houseCards}`)
+
+            var hitOrFold = prompt(`Hit or fold? \n Your Cards: ${blackjackCards} \n House Cards: ${houseCards}`, "").toLowerCase()
+            
+            // Hit or Fold Interaction
+            if (hitOrFold == "hit") {
+                blackjackCards = blackjackCards + Math.floor((Math.random() * 13)+1)
+            } 
+            else if (hitOrFold == "fold" && blackjackCards > houseCards && blackjackCards <= 21) {
+                console.log("Congratulations, you win!")
+            } 
+            else if (hitOrFold == "fold" && blackjackCards < houseCards && houseCards <= 21) {
+                console.log("You lose! The house always wins.")
+            } 
+        }
+        else if (userPrompt == "maybe" || userPrompt == "i don't know" || userPrompt == "i dont know") {
+            console.log("Make up your mind!")
+        }
+        else {
+            console.log("Could you answer my questions like a normal person, please?")
+        } 
+
+        // Lose conditions for player and House.
+        if (blackjackCards > 21) {
+            console.log("BUST! You lose! The house always wins!")
+        } else if (houseCards > 21) {
+            console.log("Congratulations! You won!")
+        }
+    </script>
+</body>
+</html>
