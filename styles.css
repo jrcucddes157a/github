@@ -38,10 +38,22 @@ header h2 {
 }
 
 #volume {
-    width: 141px;
-    height: 96px;
+    width: 80px;
+    height: 80px;
     position: relative;
-    top: 13px;
+    top: 22px;
+}
+
+#volume:hover {
+    cursor: pointer;
+    animation: volumeTurn 3s ease-in-out infinite;
+}
+
+@keyframes volumeTurn {
+    0% {rotate: 0deg;}
+    30% {rotate: 120deg;}
+    65% {rotate: -90deg;}
+    100% {rotate: 0deg;}
 }
 
 #casette {
