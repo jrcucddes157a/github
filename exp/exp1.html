@@ -11,44 +11,14 @@
     <title>Experiment 1 Javascript</title>
 </head>
 <body>
-    <h1>Experiment 1</h1>
-    <h2>Use the following commands to open the console and see the experiment!</h2>
-    <h3>Windows: CTRL + ALT + J</h3>
-    <h3>MacOS: CMD + Option + J</h3>
+    <div>
+        <h1>Experiment 1</h1>
+        <h2>Use the following commands to open the console and see the experiment!</h2>
+        <h3>Windows: CTRL + SHIFT + J</h3>
+        <h3>MacOS: CMD + Option + J</h3>
+    </div>
 
-    <script>
-        // var userInitPrompt = prompt("Want to make a bet?", "").toLowerCase()
-
-        // if (userInitPrompt == "yes") {
-        //      var cpuNum = Math.floor((Math.random() * 100) + 1)
-        //     var userNum = Math.floor((Math.random() * 100) + 1)
-
-        //     var betPrompt = prompt ("I just generated two numbers. One for me, and one for you. Answer this: do you think your number is higher, or lower?", "").toLowerCase()
-
-        //     if (betPrompt == "higher" && userNum > cpuNum) {
-        //         console.log("Congratulations, you won the bet! See?" + '\n')
-        //         console.log(`Your Number: ${userNum} \n`)
-        //         console.log(`My Number: ${cpuNum} \n`)
-        //     } else if (betPrompt == "lower" && userNum < cpuNum) {
-        //         console.log("Congratulations, you won the bet! See?" + '\n')
-        //         console.log(`Your Number: ${userNum} \n`)
-        //         console.log(`My Number: ${cpuNum} \n`)
-        //     } else if (betPrompt == "higher" && userNum < cpuNum) {
-        //             console.log("Oof. See the numbers? Better luck next time!" + '\n')
-        //             console.log(`Your Number: ${userNum} \n`)
-        //             console.log(`My Number: ${cpuNum} \n`)
-        //     } else if (betPrompt == "lower" && userNum > cpuNum) {
-        //             console.log("Oof. See the numbers? Better luck next time!" + '\n')
-        //             console.log(`Your Number: ${userNum} \n`)
-        //             console.log(`My Number: ${cpuNum} \n`)
-        //     } else {
-        //             console.log("Come on, man. Give me an actual response!")
-        //     }
-        // } else if { userInitPrompt == "no"} {
-        //     console.log("God, you're so lame!")
-        // }
-        
-        
+    <script>        
         var userPrompt = prompt("Wanna play some blackjack?", "").toLowerCase()
         var blackjackCards = 0
         var houseCards = 0
@@ -68,24 +38,40 @@
 
             var hitOrFold = prompt(`Hit or fold? \n Your Cards: ${blackjackCards} \n House Cards: ${houseCards}`, "").toLowerCase()
             
-            // Hit or Fold Interaction
+            // Hit or Fold Interactions
             if (hitOrFold == "hit") {
                 blackjackCards += blackjackCards + Math.floor((Math.random() * 13)+1)
                 console.log(`Your Cards: ${blackjackCards}`)
 
                 var hitOrFold2 = prompt(`Hit or fold? \n Your Cards: ${blackjackCards} \n House Cards: ${houseCards}`, "").toLowerCase()
-            } 
-            else if (hitOrFold == "fold" && blackjackCards > houseCards && blackjackCards <= 21) {
+
+                if (hitOrFold2 == "fold" && blackjackCards > houseCards && blackjackCards <= 21) {
+                   console.log("Congratulations, you win!")
+                }
+                else if (hitOrFold2 == "fold" && blackjackCards < houseCards && houseCards <= 21) {
+                    console.log("You lose! The house always wins.")
+                } 
+                else if (hitOrFold2 == "hit") {
+                    blackjackCards += blackjackCards + Math.floor((Math.random() * 13)+1)
+                    houseCards += houseCards + Math.floor((Math.random() * 13)+1)
+                    console.log(`Your Cards: ${blackjackCards}`)
+                    console.log(`House Cards: ${houseCards}`)
+                }
+           
+        }  else if (hitOrFold == "fold" && blackjackCards > houseCards && blackjackCards <= 21) {
                 console.log("Congratulations, you win!")
             } 
             else if (hitOrFold == "fold" && blackjackCards < houseCards && houseCards <= 21) {
                 console.log("You lose! The house always wins.")
             } 
-        }
-        else if (userPrompt == "maybe" || userPrompt == "i don't know" || userPrompt == "i dont know") {
+    }
+    else if (userPrompt == "maybe" || userPrompt == "i don't know" || userPrompt == "i dont know") {
             console.log("Make up your mind!")
         }
-        else {
+    else if (userPrompt === null) {
+        console.log("Cancelled out?! What are you, chicken?")
+    }
+    else {
             console.log("Could you answer my questions like a normal person, please?")
         } 
 
@@ -93,7 +79,7 @@
         if (blackjackCards > 21) {
             console.log("BUST! You lose! The house always wins!")
         } else if (houseCards > 21) {
-            console.log("Congratulations! You won!")
+            console.log("Congratulations! You win!")
         }
     </script>
 </body>
