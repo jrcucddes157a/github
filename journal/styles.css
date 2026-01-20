@@ -82,3 +82,14 @@ a:hover {
 a:active {
     color: rgb(73, 25, 117);
 }
+
+.pen {
+    position: absolute;
+    width: auto;
+    height: 50%;
+
+    left: 64%;
+    bottom: 6%;
+
+    transform: rotate(10deg);
+}
