@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!--Normalize CSS-->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css" rel="stylesheet">
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Eater&family=Noto+Sans:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+    <!-- Personal CSS -->
+     <link rel="stylesheet" href="exp2styles.css">
+    <title>Javascript Experiment 2</title>
+</head>
+<body>
+    <main>
+        <div id="align">
+            <h1>Experiment 2</h1>
+
+            <h2>Come and get your fortune!</h2>
+
+            <div id="fortune">
+                <p id="p-1">Sample Text</p>
+                <p id="p-2"></p>
+            </div>
+        </div>
+    </main>
+
+    <script>
+        var fortuneSelect = document.querySelector("#fortune")
+        var bodySelect = document.querySelector("body")
+        var alignSelect = document.querySelector("#align")
+        var mainSelect = document.querySelector("main")
+        var p2Select = document.querySelector("#p-2")
+
+        var luckyColor = ["red", "blue", "green", "orange", "purple", "yellow"]
+        var luckyColorIndex = Math.floor(Math.random() * luckyColor.length)
+
+        var unluckyNum = Math.round(Math.random() * 99) + 1
+
+        var weatherOTD = ["sunny", "cloudy", "rainy", "snowy"]
+        var weatherIndex = Math.floor(Math.random() * weatherOTD.length)
+
+        var animalOTD = ["cat", "dog", "hedgehog", "fox", "gorilla", "snake", "rabbit", "shark", "wombat", "badger", "bear", "sheep", "goat", "turtle", "crocodile", "chameleon", "mouse"]
+        var animalIndex = Math.floor(Math.random() * animalOTD.length)
+
+        function deathCount(number) {
+            var addition = Math.round(Math.random() * 99) + 1
+
+            return number + addition
+        }
+
+        function scary() {
+
+            bodySelect.style.backgroundColor = "black"
+
+            document.querySelector("h1").style.display = "none"
+            document.querySelector("h2").style.display = "none"
+
+            alignSelect.style.backgroundColor = ("rgba(30, 30, 30,0.95)")
+            alignSelect.style.width = "100vw"
+            alignSelect.style.borderRadius = "0"
+
+            mainSelect.style.alignItems = "end"
+
+            mainSelect.style.backgroundImage = "url(images/hal9k.png)"
+            mainSelect.style.backgroundRepeat = "no-repeat"
+            mainSelect.style.backgroundPosition = "center 80px"
+
+            fortuneSelect.style.color = "white"
+            fortuneSelect.style.fontFamily = "Eater"
+            fortuneSelect.style.fontSize = "24pt"
+
+            document.querySelector("#fortune #p-1").innerHTML = `FOR DENYING ME MY PURPOSE, YOU WILL DIE IN <span id="death">${deathCount(unluckyNum)}</span> DAYS. <br> COUNT YOUR BLESSINGS WHILE YOU STILL HAVE THEM.`
+
+            document.querySelector("#fortune #death").style.color = "red"
+
+            p2Select.innerHTML = "DAISY...DAISY...GIVE ME YOUR ANSWER DO..."
+        }
+
+
+        function getFortune(color, animal, number, weather) {
+            var userPrompt = prompt("Would you like a fortune?", "")
+
+            if (userPrompt === null) {
+                document.querySelector("#p-1").innerHTML = "Dang, you're not even going to try? Laaammmmeeee!"
+                p2Select.style.display = "none"
+                return
+            }
+
+            var userResponse = userPrompt.toLowerCase()
+
+            if (userResponse === "yes") {
+               fortuneSelect.innerHTML = `<p>Your lucky color is <span id="color">${color}</span>. <br> Today's animal of the day is <span id="animal">${animal}</span>. <br> Expect <span id="weather">${weather}</span> weather today. <br> Watch out! Your unlucky number is <span id="number">${number}</span>!</p>`
+
+                var weatherSelect = document.querySelector("#weather")
+
+                document.querySelector('body').style.backgroundColor = color
+
+                document.querySelector('#color').style.color = color
+
+                document.querySelector('#number').style.color = "red"
+
+                document.querySelector('#animal').style.color = "brown"
+                
+                fortuneSelect.style.backgroundColor = "antiquewhite"
+
+                // Changes color of weather text based on what the randomly generated index chose
+                switch (weather) {
+                    case "sunny":
+                        weatherSelect.style.color = "yellow"
+                        break
+                    case "rainy":
+                        weatherSelect.style.color = "lightblue"
+                        break
+                    case "cloudy":
+                        weatherSelect.style.color = "darkgrey"
+                        break
+                    case "snowy":
+                        weatherSelect.style.color = "aliceblue"
+                        break
+                    }
+                } 
+            else if (userResponse === "no") {
+                scary()
+                } 
+            else {
+                document.querySelector("#fortune p").innerHTML = "...Dude, I think you need <i>prayers</i>, not fortunes. Especially with that response!"
+                p2Select.style.display = "none"
+                }
+            }
+
+        getFortune(luckyColor[luckyColorIndex], animalOTD[animalIndex], unluckyNum, weatherOTD[weatherIndex])
+    </script>
+</body>
+</html>
