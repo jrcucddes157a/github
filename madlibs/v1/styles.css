@@ -18,15 +18,18 @@ main {
     color: white;
     border: solid 7px #1db5ed69;
 
-    width: 50%;
+    width: 40%;
     height: 750px;
 
     margin: auto;
+    margin-top: 3.25rem;
+
     position: relative;
-    left: 23%;
+    left: 26.5%;
 
     padding: 30px;
 
+    /* overflow: hidden; */
 }
 
 label, legend, div, #init-date {
@@ -52,6 +55,9 @@ form {
     font-size: 14pt;
 }
 
+#progress {
+    margin-bottom: 3rem;
+}
 
 #progress-bar-back {
     width: 300px;
