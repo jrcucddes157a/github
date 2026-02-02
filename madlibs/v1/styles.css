@@ -1,0 +1,126 @@
+/* Things to Do:
+
+1. Get Margin working on text input fields
+2. Get borders for progress bar and main to look like Figma design if possible
+3. Animations to support transition between form stages and final text blocks
+4. Style Arrow Buttons after Figma Design
+*/
+
+body {
+    background-color: black;
+}
+
+main {
+    text-transform: uppercase;
+
+    background: #252C4F;
+    background: radial-gradient(circle, rgba(37, 44, 79, 1) 50%, rgba(84, 100, 181, 1) 99%);
+    color: white;
+    border: solid 7px #15A3D769;
+
+    width: 50%;
+    height: 750px;
+
+    margin: auto;
+    position: relative;
+    left: 23%;
+
+    padding: 30px;
+
+}
+
+label, legend, div, #init-date {
+    font-family: "Doto", sans-serif;
+    font-weight: 600;
+}
+
+legend {
+    font-size: 18pt;
+    font-weight: 900;
+    margin-bottom: 1.25rem;
+}
+
+fieldset {
+    border: none;
+}
+
+form {
+    width: 90%;
+    min-width: 500px;
+    margin: auto;
+
+    font-size: 14pt;
+}
+
+
+#progress-bar-back {
+    width: 300px;
+    height: 20px;
+    background-color: #d9d9d9;
+    display: flex;
+    justify-self: end;
+
+    border: solid 5px #9CA9BF;
+    border-radius: 5px;
+}
+
+#progress-bar {
+    width: 0px;
+    height: 20px;
+    background-color: #758DF8;
+    transition: all 0.5s ease;
+}
+
+#progress-text {
+    text-align: end;
+    margin-bottom: 1rem;
+    text-transform: uppercase;
+
+    font-size: 12pt;
+}
+
+.text {
+    font-family: "Doto", sans-serif;
+    font-weight: 600;
+    color: lightgray;
+
+    background-color: #5a5a5a;
+
+    border: 2px solid #b0aeae63;
+
+    padding: 3px;
+}
+
+label {
+    font-size: 16pt;
+}
+
+#aliens-real .text {
+    display: block;
+    margin-block: 0.5rem;
+}
+
+#init-qs .init-button, #init-qs label {
+    display: block;
+    margin-block: 0.65rem;
+}
+
+.buttons {
+    display: inline;
+}
+
+#yes-aliens, #no-aliens, #init-button, .next, .prev:hover {
+    cursor: pointer;
+}
+
+.text {
+    cursor: text;
+}
+
+#aliens-fake, #aliens-fake-img {
+    display: none;
+}
+
+#aliens-real, #aliens-real-img {
+    display: none;
+}

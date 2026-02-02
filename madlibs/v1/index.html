@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!--Normalize CSS-->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css" rel="stylesheet">
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Doto:wght@100..900&family=Zen+Dots&display=swap" rel="stylesheet">
+    <!-- Personal CSS -->
+    <link rel="stylesheet" href="styles.css">
+    <!-- JS -->
+    <script src="scripts.js" defer></script>
+    <title>A Journey into the Final Frontier</title>
+</head>
+<body>
+
+    <!-- Things to Add:
+     1: Mad Libs text blocks for either path with Spans that match text input IDs -->
+
+    <main>
+        <p id="init-date">01.01.2089 | 00:00</p>
+        <form>
+            <div id="progress">
+                <div id="progress-bar-back"><span id="progress-bar"></span></div>
+                <div id="progress-text">Progress: <span id="percent-complete">0</span>%</div>
+            </div>
+
+            <fieldset id="init-qs">
+                <legend>Do you believe aliens are real?</legend>
+                
+                <label for="yes-aliens"><input type="radio" id="yes-aliens">Yes, I think they exist.</label>
+                <label for="no-aliens"><input type="radio" id="no-aliens">No, they don't exist.</label>
+
+                <input type="button" value="&rarr;" id="init-button">
+            </fieldset>
+
+            <div id="init-img">
+                <img src="#" alt="astronaut in a rocket">
+                <img src="#" alt="starry background">
+            </div>
+
+            <fieldset id="aliens-real">
+                <label for="color-real">Color</label>
+                <input type="text" id="color-real" class="text">
+
+                <label for="adj-real">Adjective</label>
+                <input type="text" id="adj-real" class="text">
+
+                <label for="emo-adj-real">Emotional Adjective</label>
+                <input type="text" id="emo-adj-real" class="text">
+
+                <label for="action-real">Action Ending in "-ing"</label>
+                <input type="text" id="action-real" class="text">
+
+                <label for="stateian-real">Adjective; US State "-ian"</label>
+                <input type="text" id="stateian-real" class="text">
+
+                <label for="name-real">Name</label>
+                <input type="text" id="name-real" class="text">
+
+                <label for="imm1-real">Immature Action Ending in "-ing"</label>
+                <input type="text" id="imm1-real" class="text">
+
+                <label for="sound-real">Sound</label>
+                <input type="text" id="sound-real" class="text">
+
+                <label for="imm2-real">Different "-ing" Immature Action</label>
+                <input type="text" id="imm2-real" class="text">
+
+                <label for="time-real">Passage of Time</label>
+                <input type="text" id="time-real" class="text">
+
+                <label for="weapon-real">Weapon</label>
+                <input type="text" id="weapon-real" class="text">
+
+                <label for="mocking-real">Past Tense Mocking Action</label>
+                <input type="text" id="mocking-real" class="text">
+
+                <div class="buttons">
+                    <input type="button" value="&larr;" class="prev">
+                    <input type="button" value="&rarr;" class="next">
+                </div>
+            </fieldset>
+            
+            <div id="aliens-real-img">
+                <img src="#" alt="moon background">
+                <img src="#" alt="animation of astronaut giving thousand yard stare after alien shot friend into a smoking pile of dust">
+            </div>
+
+            <fieldset id="aliens-fake">
+                <label for="nationality-fake">Nationality</label>
+                <input type="text" id="nationality-fake" class="text">
+
+                <label for="name1-fake">name</label>
+                <input type="text" id="name1-fake" class="text">
+
+                <label for="fruit-fake">Fruit</label>
+                <input type="text" id="fruit-fake" class="text">
+
+                <label for="space-suit-fake">Space Suit Part</label>
+                <input type="text" id="space-suit-fake" class="text">
+
+                <label for="body1-fake">Body Part</label>
+                <input type="text" id="body1-fake" class="text">
+
+                <label for="action-fake">Past Tense Action Verb</label>
+                <input type="text" id="action-fake" class="text">
+
+                <label for="clothing-fake">Article of Clothing</label>
+                <input type="text" id="clothing-fake" class="text">
+
+                <label for="hardware-fake">Hardware Part</label>
+                <input type="text" id="hardware-fake" class="text">
+
+                <label for="number-fake">Number Between 1 and 20</label>
+                <input type="text" id="number-fake" class="text">
+
+                <label for="emo-action-fake">Emotional Action Verb</label>
+                <input type="text" id="emo-action-fake" class="text">
+
+                <label for="animal-fake">Small Animal</label>
+                <input type="text" id="animal-fake" class="text">
+
+                <label for="obj-fake">Object</label>
+                <input type="text" id="obj-fake" class="text">
+
+                <label for="name2-fake">Different Name</label>
+                <input type="text" id="name2-fake" class="text">
+
+                <label for="body2-fake">Different Body Part</label>
+                <input type="text" id="body2-fake" class="text">
+
+                <label for="violence-fake">Past Tense Violent Action Verb</label>
+                <input type="text" id="violence-fake" class="text">
+
+                <label for="body3-fake">Other Body Part</label>
+                <input type="text" id="body3-fake" class="text">
+
+                <div class="buttons">
+                    <input type="button" value="&larr;" class="prev">
+                    <input type="button" value="&rarr;" class="next">
+                </div>
+            </fieldset>
+
+            <div id="aliens-fake-img">
+                <img src="#" alt="iss space station">
+                <img src="#" alt="astronaut flailing arms while being flung from rope">
+            </div>
+        </form>
+    </main>
+    
+</body>
+</html>
