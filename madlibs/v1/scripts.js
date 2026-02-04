@@ -5,10 +5,13 @@
 
     // Things to Code & Implement:
 
-    // 1: Load Screen
+    // 1: Load Screen (Transition Screen Between Form Changes and Page Changes)
     // 2: Fix Back Button for No Response Page and Radio Buttons
     // 3: Separate Screens for Inputs to fit small height
-    // 4: Transition Screen Between Form Changes
+    // 4: Actual Madlib Code
+
+    // Defining variables for use
+    const fullFormSelect = document.querySelector('form')
 
     const initButtonSelect = document.querySelector('#init-button')
     const initFormSelect = document.querySelector('#init-qs')
@@ -25,17 +28,22 @@
 
     const prevButton = document.querySelector('.prev')
     const nextButton = document.querySelector('.next')
+    const submitButton = document.querySelector('#submit')
 
     let progressBarPercent = document.querySelector('#percent-complete')
     let progressBarVisual = document.querySelector('#progress-bar')
 
+    let pageNum
+
+    submitButton.style.display = "none"
+
+    // Makes the first text box disappear after the initial question
     initButtonSelect.addEventListener('click', function(){
         if (aliensYes.checked) {
             initFormSelect.style.display = 'none'
             initImgs.style.display = 'none'
 
             aliensRealForm.style.display = 'block'
-            aliensRealImgs.style.display = 'contents'
 
             progressBarPercent.innerHTML = '20'
             progressBarVisual.style.width = '20%'
@@ -44,7 +52,6 @@
             initImgs.style.display = 'none'
 
             aliensFakeForm.style.display = 'block'
-            aliensFakeImgs.style.display = 'contents'
 
             progressBarPercent.innerHTML = '20'
             progressBarVisual.style.width = '20%'
@@ -53,6 +60,7 @@
         }
     })
 
+    // Back Button for Text Pages
     // Back button not working for "aliensFake" pages; why???
     prevButton.addEventListener('click', function(){
         aliensFakeForm.style.display = "none"
@@ -66,5 +74,36 @@
 
         progressBarPercent.innerHTML = '0'
         progressBarVisual.style.width = '0%'
+    })
+
+
+    // Checks everything on submit
+    fullFormSelect.addEventListener('submit', function(){
+        if (aliensYes.checked) {
+            const allYesTextInputs = document.querySelectorAll('#aliens-real input[type="text"]')
+
+            // Returns an error if user hasn't filled out form fully
+            // If no error, user gets completed madlib
+            for (var i = 0; i <= allYesTextInputs.length; i++) {
+                if (allYesTextInputs[i] == '') {
+                    alert('Error! Please fill out all forms.')
+                } else {
+                    
+                }
+            }
+
+            let yesText
+
+            aliensRealImgs.style.display = 'contents'
+
+            document.querySelector('#madlib-real').innerHTML = yesText
+        } else if (aliensNo.checked) {
+            
+            let noText = ``
+
+            aliensFakeImgs.style.display = 'contents'
+
+            document.querySelector('#madlib-fake').innerHTML = noText
+        }
     })
 }())
