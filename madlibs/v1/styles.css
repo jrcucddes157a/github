@@ -8,6 +8,8 @@
 
 body {
     background-color: black;
+    width: 1200px;
+    height: 750px;
 }
 
 main {
@@ -20,14 +22,14 @@ main {
     border-radius: 15px;
     
 
-    width: 40%;
+    width: 65%;
     height: 750px;
 
     margin: auto;
     margin-top: 3.25rem;
 
     position: relative;
-    left: 26.5%;
+    left: 100%;
 
     padding: 30px;
 
@@ -124,16 +126,22 @@ label {
 }
 
 .buttons {
-    display: inline;
+    display: flex;
+    gap: 50px;
+
+    position: absolute;
+    bottom: 60px;
+    left: 62%;
 }
 
-#yes-aliens, #no-aliens, #init-button, .next, .prev:hover {
+#yes-aliens, #no-aliens,.next, .prev :hover{
     cursor: pointer;
 }
 
-.text {
+.text:hover {
     cursor: text;
 }
+
 
 #aliens-fake, #aliens-fake-img {
     display: none;
@@ -160,8 +168,8 @@ label {
 
 .prev, .next, #init-button {
     display: flex;
-    align-items: center;
-    justify-items: center;
+    align-content: center;
+    justify-content: center;
 
     border: 3px solid #100f6890;
     background-color: #758DF8;
@@ -172,9 +180,8 @@ label {
 
     margin: auto;
 
-    font-weight: 900;
-    font-size: 32pt;
-    text-align: center;
+    font-weight: 700;
+    font-size: 38pt;
 
     border-radius: 5px;
 }

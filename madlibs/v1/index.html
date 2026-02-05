@@ -44,7 +44,9 @@
                     <label for="no-aliens">No, they don't exist.</label>
                 </div>
 
-                <input type="button" value="&rarr;" id="init-button">
+                <div class="buttons">
+                    <input type="button" value="&rarr;" class="next">
+                </div>
             </fieldset>
 
             <div id="init-img">
@@ -55,70 +57,76 @@
             <fieldset id="aliens-real">
                 <legend>Fill it out!</legend>
 
-                <div class="inputdiv">
-                    <label for="color-real">Color</label>
-                    <input type="text" id="color-real" class="text" required>
-                </div>
+                <section class="showing">
+                    <div class="inputdiv">
+                        <label for="color-real">Color</label>
+                        <input type="text" id="color-real" class="text" required>
+                    </div>
 
-                <div class="inputdiv">
-                    <label for="adj-real">Adjective</label>
-                    <input type="text" id="adj-real" class="text" required>
-                </div>
+                    <div class="inputdiv">
+                        <label for="adj-real">Adjective</label>
+                        <input type="text" id="adj-real" class="text" required>
+                    </div>
 
-                <div class="inputdiv">
-                    <label for="emo-adj-real">Emotional Adjective</label>
-                    <input type="text" id="emo-adj-real" class="text" required>
-                </div>
+                    <div class="inputdiv">
+                        <label for="emo-adj-real">Emotional Adjective</label>
+                        <input type="text" id="emo-adj-real" class="text" required>
+                    </div>
 
-                <div class="inputdiv">
-                     <label for="action-real">Action Ending in "-ing"</label>
-                    <input type="text" id="action-real" class="text" required>
-                </div>
+                    <div class="inputdiv">
+                        <label for="action-real">Action Ending in "-ing"</label>
+                        <input type="text" id="action-real" class="text" required>
+                    </div>
+                </section>
 
-                <div class="inputdiv">
-                    <label for="stateian-real">Adjective; US State "-ian"</label>
-                    <input type="text" id="stateian-real" class="text" required>
-                </div>
+                <section class="hidden">
+                    <div class="inputdiv">
+                        <label for="stateian-real">Adjective; US State "-ian"</label>
+                        <input type="text" id="stateian-real" class="text" required>
+                    </div>
+                
+                    <div class="inputdiv">
+                        <label for="name-real">Name</label>
+                        <input type="text" id="name-real" class="text" required>
+                    </div>
 
-                <div class="inputdiv">
-                    <label for="name-real">Name</label>
-                    <input type="text" id="name-real" class="text" required>
-                </div>
+                    <div class="inputdiv">
+                        <label for="imm1-real">Immature Action Ending in "-ing"</label>
+                        <input type="text" id="imm1-real" class="text" required>
+                    </div>
 
-                <div class="inputdiv">
-                    <label for="imm1-real">Immature Action Ending in "-ing"</label>
-                    <input type="text" id="imm1-real" class="text" required>
-                </div>
+                    <div class="inputdiv">
+                        <label for="sound-real">Sound</label>
+                        <input type="text" id="sound-real" class="text" required>
+                    </div>
+                </section>
 
-                <div class="inputdiv">
-                    <label for="sound-real">Sound</label>
-                    <input type="text" id="sound-real" class="text" required>
-                </div>
+                <section class="hidden">
+                    <div class="inputdiv">
+                        <label for="imm2-real">Different "-ing" Immature Action</label>
+                        <input type="text" id="imm2-real" class="text" required>
+                    </div>
 
-                <div class="inputdiv">
-                    <label for="imm2-real">Different "-ing" Immature Action</label>
-                    <input type="text" id="imm2-real" class="text" required>
-                </div>
+                    <div class="inputdiv">
+                        <label for="time-real">Passage of Time</label>
+                        <input type="text" id="time-real" class="text" required>
+                    </div>
 
-                <div class="inputdiv">
-                    <label for="time-real">Passage of Time</label>
-                    <input type="text" id="time-real" class="text" required>
-                </div>
+                    <div class="inputdiv">
+                        <label for="weapon-real">Weapon</label>
+                        <input type="text" id="weapon-real" class="text" required>
+                    </div>
 
-                <div class="inputdiv">
-                    <label for="weapon-real">Weapon</label>
-                    <input type="text" id="weapon-real" class="text" required>
-                </div>
+                    <div class="inputdiv">
+                        <label for="mocking-real">Past Tense Mocking Action</label>
+                        <input type="text" id="mocking-real" class="text" required>
+                    </div>
+                </section>
 
-                <div class="inputdiv">
-                    <label for="mocking-real">Past Tense Mocking Action</label>
-                    <input type="text" id="mocking-real" class="text" required>
-                </div>
-
-                <div class="buttons">
-                    <input type="button" value="&larr;" class="prev">
-                    <input type="button" value="&rarr;" class="next">
-                </div>
+                    <div class="buttons">
+                        <input type="button" value="&larr;" class="prev">
+                        <input type="button" value="&rarr;" class="next">
+                    </div>
             </fieldset>
             
             <div id="aliens-real-img">
@@ -129,67 +137,74 @@
             <fieldset id="aliens-fake">
                 <legend>Fill it out!</legend>
 
-                <div class="inputdiv">
-                    <label for="nationality-fake">Nationality</label>
-                    <input type="text" id="nationality-fake" class="text" required>
-                </div>
+                <section class="showing">
+                    <div class="inputdiv">
+                        <label for="nationality-fake">Nationality</label>
+                        <input type="text" id="nationality-fake" class="text" required>
+                    </div>
 
-                <div class="inputdiv">
-                    <label for="name1-fake">name</label>
-                    <input type="text" id="name1-fake" class="text" required>
-                </div>
+                    <div class="inputdiv">
+                        <label for="name1-fake">name</label>
+                        <input type="text" id="name1-fake" class="text" required>
+                    </div>
 
-                <div class="inputdiv">
-                    <label for="fruit-fake">Fruit</label>
-                    <input type="text" id="fruit-fake" class="text" required>
-                </div>
+                    <div class="inputdiv">
+                        <label for="fruit-fake">Fruit</label>
+                        <input type="text" id="fruit-fake" class="text" required>
+                    </div>
 
-                <div class="inputdiv">
-                    <label for="space-suit-fake">Space Suit Part</label>
-                    <input type="text" id="space-suit-fake" class="text" required>
-                </div>
+                    <div class="inputdiv">
+                        <label for="space-suit-fake">Space Suit Part</label>
+                        <input type="text" id="space-suit-fake" class="text" required>
+                    </div>
+                </section>
 
-                <div class="inputdiv">
-                    <label for="body1-fake">Body Part</label>
-                    <input type="text" id="body1-fake" class="text" required>
-                </div>
+                <section class="hidden">
+                    <div class="inputdiv">
+                        <label for="body1-fake">Body Part</label>
+                        <input type="text" id="body1-fake" class="text" required>
+                    </div>
 
-                <div class="inputdiv">
-                    <label for="action-fake">Past Tense Action Verb</label>
-                    <input type="text" id="action-fake" class="text" required>
-                </div>
+                    <div class="inputdiv">
+                        <label for="action-fake">Past Tense Action Verb</label>
+                        <input type="text" id="action-fake" class="text" required>
+                    </div>
 
-                <div class="inputdiv">
-                    <label for="clothing-fake">Article of Clothing</label>
-                    <input type="text" id="clothing-fake" class="text" required>
-                </div>
+                    <div class="inputdiv">
+                        <label for="clothing-fake">Article of Clothing</label>
+                        <input type="text" id="clothing-fake" class="text" required>
+                    </div>
 
-                <div class="inputdiv">
-                    <label for="hardware-fake">Hardware Part</label>
-                    <input type="text" id="hardware-fake" class="text" required>
-                </div>
+                    <div class="inputdiv">
+                        <label for="hardware-fake">Hardware Part</label>
+                        <input type="text" id="hardware-fake" class="text" required>
+                    </div>
+                </section>
 
-                <div class="inputdiv">
-                    <label for="number-fake">Number Between 1 and 20</label>
-                    <input type="text" id="number-fake" class="text" required>
-                </div>
+               <section class="hidden">
+                    <div class="inputdiv">
+                        <label for="number-fake">Number Between 1 and 20</label>
+                        <input type="text" id="number-fake" class="text" required>
+                    </div>
 
-                <div class="inputdiv">
-                    <label for="emo-action-fake">Emotional Action Verb</label>
-                    <input type="text" id="emo-action-fake" class="text" required>
-                </div>
+                    <div class="inputdiv">
+                        <label for="emo-action-fake">Emotional Action Verb</label>
+                        <input type="text" id="emo-action-fake" class="text" required>
+                    </div>
 
-                <div class="inputdiv">
-                    <label for="animal-fake">Small Animal</label>
-                    <input type="text" id="animal-fake" class="text" required>
-                </div>
+                    <div class="inputdiv">
+                        <label for="animal-fake">Small Animal</label>
+                        <input type="text" id="animal-fake" class="text" required>
+                    </div>
 
-                <div class="inputdiv">
-                    <label for="obj-fake">Object</label>
-                    <input type="text" id="obj-fake" class="text" required>
-                </div>
+                    <div class="inputdiv">
+                        <label for="obj-fake">Object</label>
+                        <input type="text" id="obj-fake" class="text" required>
+                    </div>
+               </section>
 
-                <div class="inputdiv">
+               <section class="hidden">
+                 <div class="inputdiv">
                     <label for="name2-fake">Different Name</label>
                     <input type="text" id="name2-fake" class="text" required>
                 </div>
@@ -213,6 +228,7 @@
                     <input type="button" value="&larr;" class="prev">
                     <input type="button" value="&rarr;" class="next">
                 </div>
+               </section>
             </fieldset>
 
             <div id="aliens-fake-img">
