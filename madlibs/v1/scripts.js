@@ -5,9 +5,8 @@
 
     // Things to Code & Implement:
 
-    // 1: Load Screen (Transition Screen Between Form Changes and Page Changes)
-    // 2: Fix Back Button for No Response Page and Radio Buttons
-    // 3: Separate Screens for Inputs to fit small height
+    // 1: Load Screen (Transition Screen Between Form -> Mad Lib)
+    // 2: Fix Back Button for No Response Page
     // 4: Actual Madlib Code
 
     // Defining variables for use
