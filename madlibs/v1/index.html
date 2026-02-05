@@ -21,7 +21,7 @@
      1: Mad Libs text blocks for either path with Spans that match text input IDs -->
 
     <main>
-        <p id="init-date">01.01.2089 | 00:00</p>
+        <p id="date">01.01.2089 | 00:00</p>
 
         <h1>Filling Out Log...</h1>
 
@@ -45,7 +45,9 @@
                 </div>
 
                 <div class="buttons">
-                    <input type="button" value="&rarr;" class="next">
+                    <button class="next">
+                        <img src="images/arrow.png" alt="right pointing arrow">
+                    </button>
                 </div>
             </fieldset>
 
@@ -124,8 +126,12 @@
                 </section>
 
                     <div class="buttons">
-                        <input type="button" value="&larr;" class="prev">
-                        <input type="button" value="&rarr;" class="next">
+                        <button class="prev">
+                            <img src="images/arrow2.png" alt="left pointing arrow">
+                        </button>
+                        <button class="next">
+                            <img src="images/arrow.png" alt="right pointing arrow">
+                        </button>
                     </div>
             </fieldset>
             
@@ -223,12 +229,16 @@
                     <label for="body3-fake">Other Body Part</label>
                     <input type="text" id="body3-fake" class="text" required>
                 </div>
-
-                <div class="buttons">
-                    <input type="button" value="&larr;" class="prev">
-                    <input type="button" value="&rarr;" class="next">
-                </div>
                </section>
+
+               <div class="buttons">
+                        <button class="prev">
+                            <img src="images/arrow2.png" alt="left pointing arrow">
+                        </button>
+                        <button class="next">
+                            <img src="images/arrow.png" alt="right pointing arrow">
+                        </button>
+                    </div>
             </fieldset>
 
             <div id="aliens-fake-img">

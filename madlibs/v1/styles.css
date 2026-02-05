@@ -36,7 +36,7 @@ main {
     /* overflow: hidden; */
 }
 
-label, legend, div, #init-date, h1 {
+label, legend, div, #date, h1 {
     font-family: "Doto", sans-serif;
     font-weight: 600;
 }
@@ -127,7 +127,7 @@ label {
 
 .buttons {
     display: flex;
-    gap: 50px;
+    gap: 60px;
 
     position: absolute;
     bottom: 60px;
@@ -184,4 +184,11 @@ label {
     font-size: 38pt;
 
     border-radius: 5px;
+}
+
+.prev img, .next img {
+    display: flex;
+    align-self: center;
+    width: 50%;
+    height: 80%;
 }

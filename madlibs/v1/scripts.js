@@ -30,6 +30,8 @@
 
     const submitButton = document.querySelector('#submit')
 
+    const date = document.querySelector('#date')
+
     let progressBarPercent = document.querySelector('#percent-complete')
     let progressBarVisual = document.querySelector('#progress-bar')
 
@@ -83,18 +85,6 @@
         }
     }
 
-    // Function for Validation of Current Section Inputs
-    function checkCurrentSection() {
-        const currentSection = section[currentPage - 1]
-        const currentInputs = currentSection.querySelectorAll('input[type="text"]')
-
-        for (let inputs of currentInputs) {
-            if (inputs.value === '') {
-                alert('Please fill out all text boxes.')
-            }
-        }
-    }
-
     function updateUI() {
         alert(`Current Page: ${currentPage}`)
         alert(`Sections: ${totalSections}`)
@@ -115,12 +105,12 @@
         totalSections = 0
         } else {
             for (let i = 0; i < sections.length; i++) {
-                switch (sections[i]) {
-                    case i === currentPage - 1:
+                switch (i) {
+                    case currentPage - 1:
                         sections[i].style.display = 'block'
                         break
-                    default: 
-                        sections[i].style.display = 'hidden'
+                    default:
+                        sections[i].style.display = 'none'
                         break
                 }
             }
@@ -132,9 +122,7 @@
         nextButton[i].addEventListener('click', function () {
         if (currentPage === 0) {
             determiner()
-        } else {
-            checkCurrentSection()
-        }
+        } 
 
         if (currentPage < totalSections) {
             currentPage++
@@ -170,7 +158,9 @@
     function yesMadLib() {
         const allYesTextInputs = document.querySelectorAll('#aliens-real input[type="text"]')
 
-        let yesText
+        date.innerHTML = '03.03.2089 | 19:23'
+
+        let yesText 
 
         // Returns an error if user hasn't filled out form fully
         // If no error, user gets completed madlib
