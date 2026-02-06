@@ -52,6 +52,43 @@
     const nextButton = document.querySelectorAll('.next')
     const prevButton = document.querySelectorAll('.prev')
 
+    //Variables for Stars Animation
+    const sky = document.querySelector('.sky')
+    const numberOfStars = 150
+
+    function createStars() {
+        for (let i = 0; i < numberOfStars; i++) {
+            const star = document.createElement('div')
+            star.classList.add('stars')
+            let congruentWH = Math.floor(Math.random() * 4 + 1)
+
+            //Generates Random Position
+            star.style.left = `${Math.floor(Math.random() * 100)}vw`
+            star.style.top = `${Math.floor(Math.random() * 100)}vh`
+
+            //Generates Random Congruent Width & Height
+            star.style.width = `${congruentWH}px`
+            star.style.height = `${congruentWH}px`
+
+            sky.appendChild(star)
+            star.style.display = 'block'
+        }
+    }
+
+    createStars()
+
+    function repositionStars() {
+            const allStars = document.querySelectorAll('.stars')
+
+            for (let i = 0; i < allStars.length; i++) {
+                allStars[i].style.left = `${Math.floor(Math.random() * 100)}vw`
+                allStars[i].style.top = `${Math.floor(Math.random() * 100)}vh`
+            }
+    }
+
+    repositionStars()
+    setInterval(repositionStars, 3000 )
+
     // Function for Path Determination
     function determiner() {
         if (aliensYes.checked) {
