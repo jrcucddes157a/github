@@ -288,11 +288,11 @@
     submitButton.addEventListener('click', function (e) {
         e.preventDefault()
         
-        if (aliensYes.checked) {
+        if (path === 'real') {
             yesMadLib()
         }
 
-        if (aliensNo.checked) {
+        if (path === 'fake') {
             noMadLib()
         }
     })
