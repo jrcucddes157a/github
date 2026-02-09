@@ -127,13 +127,14 @@ label {
     gap: 50px;
 
     position: absolute;
-    left: 62%;
+    left: 400px;
     bottom: 50px;
     z-index: 3;
 }
 
 #aliens-real .buttons {
-    bottom: -35px;
+    left: 337px;
+    bottom: -39px;
 }
 
 #aliens-real {
@@ -223,8 +224,8 @@ label {
     text-transform: uppercase;
 
     position: absolute;
-    left: 78%;
-    top: 85.87%;
+    left: 534px;
+    bottom: 50px;
 }
 
 #submit:hover {
