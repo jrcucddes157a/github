@@ -126,17 +126,13 @@ label {
     display: flex;
     gap: 50px;
 
-    position: absolute;
-    left: 62%;
-    bottom: 50px;
+    position: fixed;
+    left: 670px;
+    bottom: 100px;
     z-index: 3;
 }
 
-#aliens-real .buttons {
-    bottom: -35px;
-}
-
-#aliens-real {
+form {
     position: relative;
 }
 
@@ -164,7 +160,7 @@ label {
     display: none;
 }
 
-.prev, .next, #init-button {
+.prev, .next {
     display: flex;
     align-content: center;
     justify-content: center;
@@ -192,12 +188,16 @@ label {
 #madlib {
     font-family: 'Doto', sans-serif;
     font-weight: 500;
-    font-size: 12pt;
+    font-size: 11pt;
     padding: 30px;
-    padding-top: 10px;
+    padding-top: 5px;
 }
 
-#madlib-real b, #madlib-fake b {
+b {
+    text-decoration: underline;
+}
+
+#madlib b {
     font-weight: 800;
 }
 
@@ -222,9 +222,9 @@ label {
 
     text-transform: uppercase;
 
-    position: absolute;
-    left: 78%;
-    top: 85.87%;
+    position: fixed;
+    left: 795px;
+    bottom: 100px;
 }
 
 #submit:hover {

@@ -49,8 +49,9 @@
     }
 
     // Variables for Button Tracking
-    const nextButton = document.querySelectorAll('.next')
-    const prevButton = document.querySelectorAll('.prev')
+    const nextButton = document.querySelector('.next')
+    const prevButton = document.querySelector('.prev')
+    prevButton.style.display = 'none'
 
     //Variables for Stars Animation
     const sky = document.querySelector('.sky')
@@ -78,33 +79,42 @@
     createStars()
 
     function repositionStars() {
-            const allStars = document.querySelectorAll('.stars')
+        const allStars = document.querySelectorAll('.stars')
 
-            for (let i = 0; i < allStars.length; i++) {
-                allStars[i].style.left = `${Math.floor(Math.random() * 100)}vw`
-                allStars[i].style.top = `${Math.floor(Math.random() * 100)}vh`
-            }
+        for (let i = 0; i < allStars.length; i++) {
+            allStars[i].style.left = `${Math.floor(Math.random() * 100)}vw`
+            allStars[i].style.top = `${Math.floor(Math.random() * 100)}vh`
+        }
     }
 
     repositionStars()
-    setInterval(repositionStars, 3000 )
+    setInterval(repositionStars, 3000)
 
     // Function for Path Determination
     function determiner() {
         if (aliensYes.checked) {
             path = 'real'
             sections = realSections
-            totalSections = realSections.length
+            totalSections = sections.length
             initFormSelect.style.display = 'none'
             aliensRealForm.style.display = 'block'
+            progressBarPercentNum += 29
+            progressBarPercent.innerHTML = `${progressBarPercentNum}`
+            progressBarVisual.style.width = `${progressBarPercentNum}%`
         }
         else if (aliensNo.checked) {
             path = 'fake'
             sections = fakeSections
-            totalSections = fakeSections.length
+            totalSections = sections.length
             initFormSelect.style.display = 'none'
             aliensFakeForm.style.display = 'block'
+            progressBarPercentNum += 20
+            progressBarPercent.innerHTML = `${progressBarPercentNum}`
+            progressBarVisual.style.width = `${progressBarPercentNum}%`
         }
+
+        currentPage++
+        prevButton.style.display = 'flex'
     }
 
     function updateUI() {
@@ -114,6 +124,7 @@
 
         //Reset 
         if (currentPage === 0) {
+            prevButton.style.display = 'none'
             if (path === 'real') {
                 aliensRealForm.style.display = 'none'
             } else if (path === 'fake') {
@@ -121,16 +132,14 @@
             }
             initFormSelect.style.display = 'block'
             submitButton.style.display = 'none'
-            aliensNo.checked = false
-            aliensYes.checked = false
-            path = 'none'
+            path = ''
             sections = []
             totalSections = 0
             progressDIV.style.display = 'contents'
             h1Target.style.display = 'block'
             progressBarPercentNum = 0
-            progressBarPercent.innerHTML = progressBarPercentNum
-            progressBarVisual.style.width = progressBarPercentNum
+            progressBarPercent.innerHTML = `${progressBarPercentNum}`
+            progressBarVisual.style.width = `${progressBarPercentNum}%`
         } else {
             for (let i = 0; i < sections.length; i++) {
                 switch (i) {
@@ -146,72 +155,89 @@
     }
 
     // Next Button Function
-    for (let i = 0; i < nextButton.length; i++) {
-        nextButton[i].addEventListener('click', function () {
-            if (currentPage === 0) {
-                if (!aliensNo.checked && !aliensYes.checked) {
-                    alert('Please select an option.')
-                    return
-                } else {
-                    determiner()
-                }
-            }
+    nextButton.addEventListener('click', function (e) {
+        e.preventDefault()
 
-            if (currentPage === totalSections - 1) {
-                nextButton[currentPage - 1].style.display = 'none'
-                submitButton.style.display = 'block'
-            }
-            currentPage++
-            updateUI()
+        console.log(currentPage + " of " + totalSections)
 
-            if (path === 'fake') {
-                progressBarPercentNum += 20
-                progressBarPercent.innerHTML = `${progressBarPercentNum}`
-                progressBarVisual.style.width = `${progressBarPercentNum}%`
-            }
-
-            if (path === 'real') {
-                progressBarPercentNum += 29
-                progressBarPercent.innerHTML = `${progressBarPercentNum}`
-                progressBarVisual.style.width = `${progressBarPercentNum}%`
-            }
-        })
-    }
-
-    //Prev Button Function
-    for (let i = 0; i < prevButton.length; i++) {
-        prevButton[i].addEventListener('click', function () {
-            if (currentPage <= 0) {
+        // Initial Page Error Check
+        if (currentPage === 0) {
+            if (!aliensNo.checked && !aliensYes.checked) {
+                alert('Please select an option.')
+                return
+            } else {
+                determiner()
+                updateUI()
                 return
             }
+        }
 
-            currentPage--
-            updateUI()
+        if (currentPage > 0 && currentPage <= totalSections) {
+            let currentSection = sections[currentPage - 1]
+            let inputs = currentSection.querySelectorAll('input[type="text"]')
+            let allFilled = true
 
-            console.log(currentPage, totalSections)
-            if (currentPage === totalSections - 1) {
-                submitButton.style.display = 'none'
-
-                if (path === 'real') {
-                    nextButton[1].style.display = 'flex'
-                } else if (path === 'fake') {
-                    nextButton[2].style.display = 'flex'
+            // If Current Section Inputs are blank, changes allFilled
+            for (let input of inputs) {
+                if (input.value === '') {
+                    allFilled = false
+                    break
                 }
             }
 
-            if (path === 'fake') {
-                progressBarPercentNum -= 20
+            // Error Handling
+            if (allFilled === false) {
+                errorHandling(inputs)
+                return
+            } else {
+                // Increments and Updates UI if pass
+                currentPage++
+                updateUI()
+
+                // Progress Bar
+                if (path === 'fake') {
+                    progressBarPercentNum += 20
+                } else if (path === 'real') {
+                    progressBarPercentNum += 29
+                }
                 progressBarPercent.innerHTML = `${progressBarPercentNum}`
                 progressBarVisual.style.width = `${progressBarPercentNum}%`
             }
+        }
+
+        // Submit Button Appearance
+        if (currentPage === totalSections) {
+            nextButton.style.display = 'none'
+            submitButton.style.display = 'block'
+        }
+    })
+
+    //Prev Button Function
+    prevButton.addEventListener('click', function (e) {
+        e.preventDefault()
+
+        if (currentPage <= 0) {
+            return
+        }
+
+        currentPage--
+        updateUI()
+
+        if (currentPage < totalSections) {
+            submitButton.style.display = 'none'
+            nextButton.style.display = 'flex'
 
             if (path === 'real') {
                 progressBarPercentNum -= 29
-                progressBarPercent.innerHTML = `${progressBarPercentNum}`
-                progressBarVisual.style.width = `${progressBarPercentNum}%`
+                nextButton.style.display = 'flex'
+            } else if (path === 'fake') {
+                progressBarPercentNum -= 20
+                nextButton.style.display = 'flex'
             }
-        })
-    }
+            progressBarPercent.innerHTML = `${progressBarPercentNum}`
+            progressBarVisual.style.width = `${progressBarPercentNum}%`
+        }
+    })
 
     function errorHandling(textInputs) {
         let emptyFields = []
@@ -230,7 +256,7 @@
             console.log(emptyFields)
             let alertString = ""
             for (let i = 0; i < emptyFields.length; i++) {
-                alertString += `${emptyFields[i]}` 
+                alertString += `${emptyFields[i]}`
                 if (i != emptyFields.length - 1) {
                     alertString += `, `
                 }
@@ -241,7 +267,7 @@
             return true
         }
     }
-    
+
     function yesMadLib() {
         const allYesTextInputs = document.querySelectorAll('#aliens-real input[type="text"]')
 
@@ -255,12 +281,13 @@
 
         document.querySelector('#madlib').innerHTML = yesText
         document.querySelector('#madlib').style.display = 'block'
-        
+
         // Runs only after loop completes successfully
         submitButton.style.display = 'none'
         aliensRealForm.style.display = 'none'
         progressDIV.style.display = 'none'
         h1Target.style.display = 'none'
+        prevButton.style.display = 'none'
     }
 
     function noMadLib() {
@@ -282,12 +309,13 @@
         aliensFakeForm.style.display = 'none'
         progressDIV.style.display = 'none'
         h1Target.style.display = 'none'
+        prevButton.style.display = 'none'
     }
 
     // Submit Function
     submitButton.addEventListener('click', function (e) {
         e.preventDefault()
-        
+
         if (path === 'real') {
             yesMadLib()
         }

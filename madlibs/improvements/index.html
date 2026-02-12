@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -8,13 +9,15 @@
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Doto:wght@100..900&family=Zen+Dots&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Doto:wght@100..900&family=Zen+Dots&display=swap"
+        rel="stylesheet">
     <!-- Personal CSS -->
     <link rel="stylesheet" href="styles.css">
     <!-- JS -->
     <script src="scripts.js" defer></script>
     <title>A Journey into the Final Frontier</title>
 </head>
+
 <body>
     <div class="sky"></div>
     <main>
@@ -30,7 +33,7 @@
 
             <fieldset id="init-qs">
                 <legend>Do you believe aliens are real?</legend>
-                
+
                 <div class="inputdiv">
                     <input type="radio" id="yes-aliens" name="do-they-exist">
                     <label for="yes-aliens">Yes, I think they exist.</label>
@@ -39,12 +42,6 @@
                 <div class="inputdiv">
                     <input type="radio" id="no-aliens" name="do-they-exist">
                     <label for="no-aliens">No, they don't exist.</label>
-                </div>
-
-                <div class="buttons">
-                    <button class="next">
-                        <img src="images/arrow.png" alt="right pointing arrow">
-                    </button>
                 </div>
             </fieldset>
 
@@ -78,7 +75,7 @@
                         <label for="stateian-real">Adjective; US State "-ian"</label>
                         <input type="text" id="stateian-real" class="text" required>
                     </div>
-                
+
                     <div class="inputdiv">
                         <label for="name-real">Name</label>
                         <input type="text" id="name-real" class="text" required>
@@ -116,17 +113,8 @@
                         <input type="text" id="mocking-real" class="text" required>
                     </div>
                 </section>
-
-                    <div class="buttons">
-                        <button class="prev">
-                            <img src="images/arrow2.png" alt="left pointing arrow">
-                        </button>
-                        <button class="next">
-                            <img src="images/arrow.png" alt="right pointing arrow">
-                        </button>
-                    </div>
             </fieldset>
-            
+
             <fieldset id="aliens-fake">
                 <legend>Fill it out!</legend>
 
@@ -174,7 +162,7 @@
                     </div>
                 </section>
 
-               <section class="hidden">
+                <section class="hidden">
                     <div class="inputdiv">
                         <label for="number-fake">Number Between 1 and 20</label>
                         <input type="text" id="number-fake" class="text" required>
@@ -194,39 +182,40 @@
                         <label for="obj-fake">Object</label>
                         <input type="text" id="obj-fake" class="text" required>
                     </div>
-               </section>
+                </section>
 
-               <section class="hidden">
-                 <div class="inputdiv">
-                    <label for="name2-fake">Different Name</label>
-                    <input type="text" id="name2-fake" class="text" required>
-                </div>
-
-                <div class="inputdiv">
-                    <label for="body2-fake">Different Body Part</label>
-                    <input type="text" id="body2-fake" class="text" required>
-                </div>
-
-                <div class="inputdiv">
-                    <label for="violence-fake">Past Tense Violent Action Verb</label>
-                    <input type="text" id="violence-fake" class="text" required>
-                </div>
-
-                <div class="inputdiv">
-                    <label for="body3-fake">Other Body Part</label>
-                    <input type="text" id="body3-fake" class="text" required>
-                </div>
-               </section>
-
-               <div class="buttons">
-                        <button class="prev">
-                            <img src="images/arrow2.png" alt="left pointing arrow">
-                        </button>
-                        <button class="next">
-                            <img src="images/arrow.png" alt="right pointing arrow">
-                        </button>
+                <section class="hidden">
+                    <div class="inputdiv">
+                        <label for="name2-fake">Different Name</label>
+                        <input type="text" id="name2-fake" class="text" required>
                     </div>
+
+                    <div class="inputdiv">
+                        <label for="body2-fake">Different Body Part</label>
+                        <input type="text" id="body2-fake" class="text" required>
+                    </div>
+
+                    <div class="inputdiv">
+                        <label for="violence-fake">Past Tense Violent Action Verb</label>
+                        <input type="text" id="violence-fake" class="text" required>
+                    </div>
+
+                    <div class="inputdiv">
+                        <label for="body3-fake">Other Body Part</label>
+                        <input type="text" id="body3-fake" class="text" required>
+                    </div>
+                </section>
             </fieldset>
+
+
+            <div class="buttons">
+                <button class="prev">
+                    <img src="images/arrow2.png" alt="left pointing arrow">
+                </button>
+                <button class="next">
+                    <img src="images/arrow.png" alt="right pointing arrow">
+                </button>
+            </div>
 
             <input type="submit" value="Submit" id="submit">
         </form>
@@ -234,4 +223,5 @@
         <article id="madlib"></article>
     </main>
 </body>
+
 </html>
