@@ -32,6 +32,10 @@ body {
     animation: fadeInY 1s ease forwards;
 }
 
+.lightbox article {
+    padding: 30px;
+}
+
 .cross {
     padding: 4px;
     margin: 0;
