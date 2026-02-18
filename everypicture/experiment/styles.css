@@ -1,0 +1,123 @@
+* {
+    box-sizing: border-box;
+}
+
+img {
+    display: block;
+}
+
+/* End Reset */
+
+body {
+    background-image: url(images/differentangle.jpg);
+    background-repeat: none;
+    margin: 0;
+}
+
+
+.lightbox {
+    background-color: black;
+    color: white;
+    width: 50rem;
+
+    position: relative;
+    left: 88.5rem;
+    top: 3rem;
+
+    overflow: scroll;
+    height: 1000px;
+
+    margin-bottom: 0;
+
+    animation: fadeInY 1s ease forwards;
+}
+
+.cross {
+    padding: 4px;
+    margin: 0;
+    display: flex;
+    justify-self: end;
+    background-color: black;
+    border: white 1px;
+    border-style: groove;
+    cursor: pointer;
+}
+
+.lightbox header img {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+    padding: 0;
+}
+
+.rotationimage {
+    display: flex;
+    flex-direction: row;
+    position: relative;
+    top: -54rem;
+    left: 5rem;
+    margin-bottom: 0;
+    perspective: 1000px;
+}
+
+.rotationimage img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    transition: transform 0.2s ease;
+    animation: fadeInY 1s ease forwards;
+}
+
+.rotationimage .zero1 {
+    z-index: 4;
+}
+
+.riderselect {
+    position: relative;
+    top: 0;
+    left: 0;
+    width: 100%;
+}
+
+.riderselect img {
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+#topper {
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 2;
+    opacity: 50%;
+    shape-outside: url(images/differentangletop.png);
+    animation: hoverOff 0.5s ease backwards;
+    cursor: pointer;
+}
+
+#topper:hover {
+    animation: hoverFade 0.4s ease forwards;
+    cursor: pointer;
+    
+}
+
+@keyframes hoverFade {
+    0% {opacity: 50%;}
+    100% {opacity: 0;}
+}
+
+@keyframes hoverOff {
+    0% {opacity: 0;}
+    100% {opacity: 50%;}
+}
+
+@keyframes fadeInY {
+    0% {transform: scaleY(0);}
+    100% {transform: scaleY(1);}
+}
+
+@keyframes fadeOutY {
+    0% {transform: scaleY(1);}
+    100% {transform: scaleY(0);}
+}
