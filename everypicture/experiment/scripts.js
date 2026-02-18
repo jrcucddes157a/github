@@ -25,7 +25,7 @@
         console.log('zero one got clicked')
 
         for (const divs of everyDiv) {
-            divs.style.animation = 'fadeInY 1s forwards'
+            // divs.style.animation = 'fadeInY 1s forwards'
             divs.style.display = 'block'
         }
 
@@ -35,7 +35,7 @@
     xButton.addEventListener('pointerdown', function () {
         for (const divs of everyDiv) {
             setTimeout(function () {
-                divs.style.animation = 'fadeOutY 1s backwards'
+                // divs.style.animation = 'fadeOutY 1s backwards'
                 setTimeout(function () {
                     divs.style.display = 'none'
                     mainZeroOneSelection.style.display = 'block'
