@@ -25,11 +25,14 @@ body {
     top: 3rem;
 
     overflow: scroll;
+    overflow-x: hidden;
     height: 1000px;
 
     margin-bottom: 0;
 
     animation: fadeInY 1s ease forwards;
+
+    box-shadow: 8px 8px 6px rgba(0, 0, 0, 0.25);
 }
 
 .lightbox article {
@@ -70,6 +73,10 @@ body {
     left: 0;
     transition: transform 0.2s ease;
     animation: fadeInY 1s ease forwards;
+}
+
+.rotationimage img:last-child {
+    box-shadow: 10px 10px 2px rgba(0, 0, 0, 0.25);
 }
 
 .rotationimage .zero1 {
