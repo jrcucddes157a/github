@@ -1,7 +1,5 @@
 * {
     box-sizing: border-box;
-    margin: 0;
-    padding: 0;
 }
 
 img {
@@ -9,3 +7,155 @@ img {
 }
 
 /* End Reset */
+
+body {
+    font-family: sans-serif;
+}
+
+main {
+    position: relative;
+}
+
+h1 {
+    text-transform: uppercase;
+    text-align: center;
+}
+
+footer {
+    text-align: center;
+    font-style: italic;
+}
+
+#period {
+    animation: blinking 1s ease infinite;
+}
+
+@keyframes blinking {
+    0% {opacity: 1;}
+    20% {opacity: 0;}
+    50% {opacity: 1;}
+}
+
+article {
+    display: flex;
+    padding-inline: 100px;
+    justify-content: space-between;
+    align-items: center;
+}
+
+audio {
+    width: 100%;
+    margin-bottom: 1rem;
+}
+
+#decade-op {
+    border-radius: 0;
+}
+
+.lightbox {
+    max-width: 47rem;
+    background-color: #18181a;
+    color: #ced1d9;
+    height: 1000px;
+    overflow-x: hidden;
+    overflow-y: scroll;
+    justify-content: end;
+    scrollbar-width: thin;
+    scrollbar-color:#18181a #ced1d9  ;
+    scroll-behavior: smooth;
+    z-index: 2;
+    box-shadow: 0px 0px 30px #00000080;
+}
+
+.cross {
+    background-color: #18181a;
+    border-style: ridge;
+    border-color: #ced1d9;
+    padding: 5px;
+    display: flex;
+    justify-self: end;
+    cursor: pointer;
+}
+
+.layered-image {
+    justify-items: left;
+    box-shadow: 0 0 30px #00000080;
+    z-index: 2;
+}
+
+section, h2, h3 {
+    padding-inline: 40px;
+    line-height: 1.25rem;
+    margin-bottom: 1.5rem;
+}
+
+section:last-of-type {
+    margin-bottom: 4rem;
+}
+
+h2 {
+    font-size: 21pt;
+    line-height: 1.75rem;
+}
+
+h3 {
+    font-style: italic;
+    font-weight: 600;
+}
+
+h4 {
+    font-size: 16pt;
+    margin-bottom: 0.75rem;
+}
+
+p
+
+.bio ul, .funfacts ul li {
+    margin-bottom: 1rem;
+}
+
+.bio ul {
+    list-style-type:none;
+    padding-inline-start: 0;
+}
+
+.bio ul li {
+    margin-bottom: 1rem;
+}
+
+ul li ul {
+    padding-inline-start: 20px;
+}
+
+ul li ul li a {
+    text-decoration: none;
+    color: lightblue;
+    padding-inline: 2rem;
+}
+
+ul li ul li a:visited {
+    color: pink;
+}
+
+.lightbox-hero {
+    width: 100%;
+    padding: 0;
+    object-fit: cover;
+}
+
+.riderselect {
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    padding-inline: 50px;
+    margin-block: 2rem;
+    /* position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%); */
+    z-index: 1;
+}
+
+#decadeoverlay, #kabutooverlay, #driveoverlay {
+    cursor: pointer;
+}
