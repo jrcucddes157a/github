@@ -28,8 +28,6 @@
         })
     }
 
-
-
     // Close Button Function
     for (let i = 0; i < allXButtons.length; i++) {
         allXButtons[i].addEventListener('pointerdown', function () {
