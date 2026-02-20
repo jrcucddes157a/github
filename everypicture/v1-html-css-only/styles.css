@@ -26,11 +26,6 @@ header {
     transform: translateX(-50%);
 }
 
-h1 {
-    transition: opacity 0.3s ease;
-    opacity: 1;
-}
-
 .fade-out {
     opacity: 0;
 }
@@ -204,4 +199,10 @@ ul li ul li a:visited {
 
 #decadeoverlay, #kabutooverlay, #driveoverlay {
     cursor: pointer;
+}
+
+@keyframes h1fade {
+    0% {opacity: 1;}
+    50% {opacity: 0;}
+    100% {opacity: 1;}
 }
