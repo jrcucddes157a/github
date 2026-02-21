@@ -204,12 +204,11 @@ ul li ul li a:visited {
 #kabutooverlay, #decadeoverlay, #driveoverlay {
     cursor: pointer;
     transition: opacity 0.4s ease-in-out;
-    opacity: 40%;
+    opacity: 25%;
 
 }
 
 #kabutooverlay:hover, #decadeoverlay:hover, #driveoverlay:hover {
-    
     opacity: 0;
 }
 
