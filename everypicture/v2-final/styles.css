@@ -9,18 +9,23 @@ img {
 /* End Reset */
 
 body {
-    font-family: sans-serif;
+    font-family: "Noto Sans", "Noto Sans JP", sans-serif;
 }
 
 #bg {
     z-index: -1;
     width: 100%;
-    overflow: hidden;
+    position: absolute;
+    top: 0;
+    left: 0;
+    transition: all 1s ease-out;
+    transform: scale(1);
 }
 
 main {
     position: relative;
     height: 100vh;
+    overflow: hidden;
 }
 
 header {
@@ -30,8 +35,12 @@ header {
     top: 0%;
     left: 50%;
     transform: translateX(-50%);
-    transition: opacity 0.3s ease;
+    transition: all 0.3s ease;
     z-index: 1;
+}
+
+h1 {
+    color: white;
 }
 
 .fade-out {
@@ -45,6 +54,7 @@ footer {
     top: 95%;
     left: 50%;
     transform: translateX(-50%);
+    color: white;
 }
 
 #period {
@@ -180,12 +190,12 @@ ul li ul {
 
 ul li ul li a {
     text-decoration: none;
-    color: lightblue;
+    color: aqua;
     padding-inline: 2rem;
 }
 
 ul li ul li a:visited {
-    color: pink;
+    color: hotpink;
 }
 
 .lightbox-hero {
@@ -203,12 +213,19 @@ ul li ul li a:visited {
 
 #kabutooverlay, #decadeoverlay, #driveoverlay {
     cursor: pointer;
-    transition: opacity 0.4s ease-in-out;
-    opacity: 25%;
-
+    transition: opacity 0.25s ease-in-out;
 }
 
 #kabutooverlay:hover, #decadeoverlay:hover, #driveoverlay:hover {
+    opacity: 0;
+}
+
+.overlay-on {
+    opacity: 0.4;
+    filter: blur(10px);
+}
+
+.clicked {
     opacity: 0;
 }
 

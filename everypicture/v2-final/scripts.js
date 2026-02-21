@@ -9,6 +9,7 @@
 
     const header = document.querySelector('header')
     const h1 = document.querySelector('h1')
+    const bg = document.querySelector('#bg')
     const period = document.querySelector('#period')
     const riderHitboxContainer = document.querySelector('.riderselect')
     const allHitboxes = document.querySelectorAll('.riderselect svg g path')
@@ -25,26 +26,57 @@
     allClosed()
 
     // Hitbox Clicking to Open Popups
-    function hitBoxClick () {
+    function hitBoxClick() {
         const kabutoHitbox = document.querySelector('#kabutooverlay')
         const decadeHitbox = document.querySelector('#decadeoverlay')
         const driveHitbox = document.querySelector('#driveoverlay')
 
-        kabutoHitbox.addEventListener('pointerdown', function() {
+        for (let greens of allHitboxes) {
+            greens.classList.add('overlay-on')
+        }
+
+        kabutoHitbox.addEventListener('pointerdown', function () {
             henshinSoundFiles[1].play()
+
+            for (let greens of allHitboxes) {
+                greens.classList.remove('overlay-on')
+                greens.classList.add('clicked')
+            }
+
             allClosed()
+
+            bg.style.transform = 'scale(3) translate(500px, -250px)'
+
             allPopUps[1].style.display = 'flex'
         })
 
-        decadeHitbox.addEventListener('pointerdown', function() {
+        decadeHitbox.addEventListener('pointerdown', function () {
             henshinSoundFiles[0].play()
+
+            for (let greens of allHitboxes) {
+                greens.classList.remove('overlay-on')
+                greens.classList.add('clicked')
+            }
+
             allClosed()
+
+            bg.style.transform = 'scale(3.25) translate(-600px, -25px)'
+
             allPopUps[0].style.display = 'flex'
         })
 
-        driveHitbox.addEventListener('pointerdown', function() {
+        driveHitbox.addEventListener('pointerdown', function () {
             henshinSoundFiles[2].play()
+
+            for (let greens of allHitboxes) {
+                greens.classList.remove('overlay-on')
+                greens.classList.add('clicked')
+            }
+
             allClosed()
+
+            bg.style.transform = 'scale(3.75) translate(100px, -25px'
+
             allPopUps[2].style.display = 'flex'
         })
     }
@@ -52,11 +84,23 @@
     hitBoxClick()
 
     // Close Button Function
-    for (let i = 0; i < allXButtons.length; i++) {
-        allXButtons[i].addEventListener('pointerdown', function () {
-            allPopUps[i].style.display = 'none'
-        })
+    function closeButton() {
+        for (let i = 0; i < allXButtons.length; i++) {
+            allXButtons[i].addEventListener('pointerdown', function () {
+                allPopUps[i].style.display = 'none'
+                bg.style.transform = 'scale(1) translate(0,0)'
+
+                setTimeout(function () {
+                    for (let greens of allHitboxes) {
+                        greens.classList.remove('clicked')
+                        greens.classList.add('overlay-on')
+                    }
+                }, 1000)
+            })
+        }
     }
+
+    closeButton()
 
     // Changes the Header Between JP and ENG every 3 Period Blinks
     function henshinText() {
