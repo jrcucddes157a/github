@@ -3,6 +3,7 @@
 
     console.log('reading JS')
 
+    // Variable Defining
     const allXButtons = document.querySelectorAll('.cross')
     const allPopUps = document.querySelectorAll('.popup')
 
@@ -13,6 +14,7 @@
     const allHitboxes = document.querySelectorAll('.riderselect img')
     const catchphrases = document.querySelectorAll('.catchphrase')
 
+    //Makes sure all popups are closed on load
     function allClosed() {
         for (let current of allPopUps) {
             current.style.display = 'none'
@@ -21,6 +23,7 @@
 
     allClosed()
 
+    // Hitbox Clicking to Open Popups
     for (let i = 0; i < allHitboxes.length; i++) {
         allHitboxes[i].addEventListener('pointerdown', function () {
             allClosed()
@@ -47,6 +50,11 @@
     }
 
     henshinText()
+
+    function henshinSound() {
+        for (let i = 0; i < allPopUps.length; i++) {
+        }
+    }
 
     // Changes Catchphrase Text to Japanese on Hover
     for (let i = 0; i < catchphrases.length; i++) {
