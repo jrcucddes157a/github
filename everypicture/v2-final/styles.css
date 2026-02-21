@@ -41,6 +41,7 @@ header {
 
 h1 {
     color: white;
+    text-align: center;
 }
 
 .fade-out {
@@ -51,10 +52,14 @@ footer {
     text-align: center;
     font-style: italic;
     position: absolute;
-    top: 95%;
+    top: 93%;
     left: 50%;
     transform: translateX(-50%);
     color: white;
+
+    background-color: #00000080;
+    padding: 10px;
+    border-radius: 5px;
 }
 
 #period {
@@ -123,6 +128,137 @@ audio {
     z-index: 5;
 }
 
+.musicplayer {
+    background-color: black;
+    padding: 20px;
+    padding-bottom: 40px;
+}
+
+.songcredits {
+    padding-left: 0;
+    font-weight: 300;
+}
+
+.songcredits a {
+    cursor: pointer;
+    text-decoration: none;
+    transition: all 0.25s ease;
+}
+
+.songcredits a:hover {
+    color: aqua;
+}
+
+.functions {
+    display: flex;
+}
+
+.play-pause {
+    display: flex;
+    align-items: center;
+}
+
+.progresscontainer {
+    background-color: #18181a;
+    width: 100%;
+    height: 10px;
+    margin-inline: 25px;
+
+    display: flex;
+    align-self: center;
+    cursor: pointer;
+}
+
+.progressbar {
+    z-index: 5;
+}
+
+.play, .pause {
+    background-color: #18181a;
+}
+
+.play {
+    font-size: 13pt;
+    padding: 9px;
+    align-items: center;
+    cursor: pointer;
+}
+
+.pause {
+    font-size: 23pt;
+    padding-inline: 8px;
+    padding-block: 1.5px;
+    cursor: pointer;
+}
+
+.volumecontainer {
+    display: flex;
+    align-items: center;
+
+    background-color: #18181a;
+    width: 5px;
+    height: 60px;
+
+    position: absolute;
+    top: 39.5%;
+    right: 8%;
+}
+
+.volumetoggle {
+    background-color: #18181a;
+    cursor: pointer;
+}
+
+.mute {
+    background-color: #18181a;
+    margin-left: 10px;
+    cursor: pointer;
+}
+
+.volumebar {
+    width: 5px;
+    height: 60px;
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+#decade-popup .play, #decade-popup .pause, #decade-popup .volumetoggle, #decade-popup .musicplayer .songcredits a, #decade-popup .mute {
+    color: magenta;
+}
+
+#decade-popup .progressbar, #decade-popup .volumebar {
+    background-color: magenta;
+}
+
+#decade-popup .songcredits a:hover {
+    color: aqua;
+}
+
+#kabuto-popup .play, #kabuto-popup .pause, #kabuto-popup .volumetoggle, #kabuto-popup .songcredits a, #kabuto-popup .mute  {
+    color: #1034ff;
+}
+
+#kabuto-popup .volumebar, #kabuto-popup .progressbar {
+    background-color: #1034ff;
+}
+
+#kabuto-popup .songcredits a:hover {
+    color: aqua;
+}
+
+#drive-popup .play, #drive-popup .pause, #drive-popup .volumetoggle, #drive-popup .songcredits a, #drive-popup .mute {
+    color: red;
+}
+
+#drive-popup .progressbar, #drive-popup .volumebar {
+    background-color: red;
+}
+
+#drive-popup .songcredits a:hover {
+    color: aqua;
+}
+
 .layered-image {
     justify-items: left;
     box-shadow: 0 0 30px #00000080;
@@ -157,6 +293,18 @@ h2:hover {
 @keyframes ENGfade {
     from { opacity: 0;}
     to {opacity: 1;}
+}
+
+#decade-popup h2, #decade-popup h4 {
+    color: magenta;
+}
+
+#kabuto-popup h2, #kabuto-popup h4 {
+    color: #1034ff;
+}
+
+#drive-popup h2, #drive-popup h4 {
+    color: red;
 }
 
 h3 {

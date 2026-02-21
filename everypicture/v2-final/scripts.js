@@ -11,10 +11,15 @@
     const h1 = document.querySelector('h1')
     const bg = document.querySelector('#bg')
     const period = document.querySelector('#period')
+
     const riderHitboxContainer = document.querySelector('.riderselect')
     const allHitboxes = document.querySelectorAll('.riderselect svg g path')
     const catchphrases = document.querySelectorAll('.catchphrase')
     const henshinSoundFiles = document.querySelectorAll('#henshinsounds audio')
+
+    const allMusicPlayers = document.querySelectorAll('.musicplayer')
+
+
 
     //Makes sure all popups are closed on load
     function allClosed() {
@@ -24,6 +29,69 @@
     }
 
     allClosed()
+
+    // Music Function
+    function musicPlayer() {
+        for (let i = 0; i < allMusicPlayers.length; i++) {
+            const pause = document.querySelectorAll('.pause')
+            const play = document.querySelectorAll('.play')
+            const volumeButton = document.querySelectorAll('.volumetoggle')
+            const volumeBar = document.querySelectorAll('.volumebar')
+            const volumeContainer = document.querySelectorAll('.volumecontainer')
+            const song = document.querySelectorAll('.song')
+            const mute = document.querySelectorAll('.mute')
+            const progressbar = document.querySelectorAll('.progressbar')
+            const progressContainer = document.querySelectorAll('.progresscontainer')
+            let volume = 0
+            let songProgress = 0
+
+            // Mutes All Audio and Displays Play Button by Default
+            pause[i].style.display = 'none'
+            song[i].muted = true
+            volumeContainer[i].style.display = 'none'
+
+            play[i].addEventListener('pointerdown', function () {
+                play[i].style.display = 'none'
+                pause[i].style.display = 'flex'
+                song[i].muted = false
+                song[i].play()
+            })
+
+            pause[i].addEventListener('pointerdown', function () {
+                pause[i].style.display = 'none'
+                play[i].style.display = 'flex'
+                song[i].pause()
+            })
+
+            song[i].addEventListener('timeupdate', function() {
+                songProgress = (song[i].currentTime / song[i].duration) * 100
+
+                progressbar[i].style.width = `${songProgress}%`
+            })
+
+            progressbar[i].addEventListener('click', function(e) {
+                let pointerX = e.offsetX
+                const containerWidth = progressContainer[i].width
+
+                song[i].currentTime = (pointerX / containerWidth)
+            })
+
+            mute[i].addEventListener('pointerdown', function() {
+                volume = 0
+                song[i].muted = true
+            })
+
+            volumeButton[i].addEventListener('pointerdown', function() {
+                if (volumeContainer[i].style.display === 'block' && true) {
+                    volumeContainer[i].style.display = 'none'
+                } else {
+                    volumeContainer[i].style.display = 'block'
+                }
+            })
+        }
+    }
+
+    musicPlayer()
 
     // Hitbox Clicking to Open Popups
     function hitBoxClick() {
@@ -45,7 +113,7 @@
 
             allClosed()
 
-            bg.style.transform = 'scale(3) translate(500px, -250px)'
+            bg.style.transform = 'scale(3) translate(20%, -17%)'
 
             allPopUps[1].style.display = 'flex'
         })
@@ -60,7 +128,7 @@
 
             allClosed()
 
-            bg.style.transform = 'scale(3.25) translate(-600px, -25px)'
+            bg.style.transform = 'scale(3.5) translate(-20%, -3%)'
 
             allPopUps[0].style.display = 'flex'
         })
@@ -75,7 +143,7 @@
 
             allClosed()
 
-            bg.style.transform = 'scale(3.75) translate(100px, -25px'
+            bg.style.transform = 'scale(4) translate(3%, -1%)'
 
             allPopUps[2].style.display = 'flex'
         })
