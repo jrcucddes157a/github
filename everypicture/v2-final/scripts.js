@@ -44,6 +44,7 @@
             const progressContainer = document.querySelectorAll('.progresscontainer')
             let volume = 0
             let songProgress = 0
+            volumeBar[i].style.height = '0%'
 
             // Mutes All Audio and Displays Play Button by Default
             pause[i].style.display = 'none'
@@ -53,7 +54,6 @@
             play[i].addEventListener('pointerdown', function () {
                 play[i].style.display = 'none'
                 pause[i].style.display = 'flex'
-                song[i].muted = false
                 song[i].play()
             })
 
@@ -63,30 +63,83 @@
                 song[i].pause()
             })
 
-            song[i].addEventListener('timeupdate', function() {
+            song[i].addEventListener('timeupdate', function () {
                 songProgress = (song[i].currentTime / song[i].duration) * 100
 
                 progressbar[i].style.width = `${songProgress}%`
             })
 
-            progressbar[i].addEventListener('click', function(e) {
+            progressContainer[i].addEventListener('pointerdown', function (e) {
                 let pointerX = e.offsetX
-                const containerWidth = progressContainer[i].width
+                const containerWidth = progressContainer[i].clientWidth
+                let wasPaused = song[i].paused
 
-                song[i].currentTime = (pointerX / containerWidth)
+                console.log('progress bar clicked')
+                console.log(pointerX / containerWidth)
+
+                song[i].currentTime = (pointerX / containerWidth) * song[i].duration
+                songProgress = (song[i].currentTime / song[i].duration) * 100
+                progressbar[i].style.width = `${songProgress}%`
+
+                if (wasPaused) {
+                    song[i].pause()
+                } else {
+                    song[i].play()
+                }
             })
 
-            mute[i].addEventListener('pointerdown', function() {
-                volume = 0
-                song[i].muted = true
+            song[i].addEventListener('ended', function () {
+                song[i].currentTime = 0;
+                progressbar[i].style.width = '0%';
+                pause[i].style.display = 'none'
+                play[i].style.display = 'flex'
             })
 
-            volumeButton[i].addEventListener('pointerdown', function() {
+            mute[i].addEventListener('pointerdown', function () {
+
+                // Flips between T/F states on click
+                song[i].muted = !song[i].muted
+
+                if (song[i].muted) {
+                    mute[i].style.backgroundColor = '#18181a'
+                    volume = 0
+                    song[i].volume = 0
+                    volumeBar[i].style.height = '0%'
+                } else {
+                    mute[i].style.backgroundColor = 'darkgray'
+                    volume = 50
+                    song[i].volume = 0.5
+                    volumeBar[i].style.height = '50%'
+                }
+            })
+
+            volumeButton[i].addEventListener('pointerdown', function () {
                 if (volumeContainer[i].style.display === 'block' && true) {
                     volumeContainer[i].style.display = 'none'
                 } else {
                     volumeContainer[i].style.display = 'block'
                 }
+            })
+
+            volumeContainer[i].addEventListener('pointerdown', function (e) {
+
+                let volInputY = e.offsetY
+                const containerHeight = volumeContainer[i].clientHeight
+
+                volume = 100 - Math.floor((volInputY / containerHeight) * 100)
+                volumeBar[i].style.height = ''
+                volumeBar[i].style.height = `${volume}%`
+                volumeBar[i].offsetHeight
+
+
+                song[i].volume = volume / 100
+
+                if (song[i].muted === true) {
+                    song[i].muted = false
+                    mute[i].style.backgroundColor = 'darkgray'
+                }
+
+                volume = Math.max(0, Math.min(100, volume))
             })
         }
     }

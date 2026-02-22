@@ -107,6 +107,7 @@ audio {
     scroll-behavior: smooth;
     z-index: 2;
     box-shadow: 0px 0px 30px #00000080;
+    transform-origin: top;
 }
 
 .cross {
@@ -159,7 +160,7 @@ audio {
 }
 
 .progresscontainer {
-    background-color: #18181a;
+    background-color: #2e2e32;
     width: 100%;
     height: 10px;
     margin-inline: 25px;
@@ -171,6 +172,7 @@ audio {
 
 .progressbar {
     z-index: 5;
+    transition: width 0.1s ease-in;
 }
 
 .play, .pause {
@@ -192,16 +194,19 @@ audio {
 }
 
 .volumecontainer {
+    padding: 0;
+    margin: 0;
+
     display: flex;
     align-items: center;
 
-    background-color: #18181a;
+    background-color: #2e2e32;
     width: 5px;
     height: 60px;
 
     position: absolute;
     top: 39.5%;
-    right: 8%;
+    right: 10.75rem;
 }
 
 .volumetoggle {
@@ -213,14 +218,21 @@ audio {
     background-color: #18181a;
     margin-left: 10px;
     cursor: pointer;
+    transition: color 0.1s ease;
+}
+
+#drive-popup .mute:hover {
+    color: white;
 }
 
 .volumebar {
     width: 5px;
     height: 60px;
     position: absolute;
-    top: 0;
+    bottom: 0;
     left: 0;
+    transition: height 0.2s ease;
+    will-change: height;
 }
 
 #decade-popup .play, #decade-popup .pause, #decade-popup .volumetoggle, #decade-popup .musicplayer .songcredits a, #decade-popup .mute {
@@ -381,4 +393,34 @@ ul li ul li a:visited {
     0% {opacity: 1;}
     50% {opacity: 0;}
     100% {opacity: 1;}
+}
+
+@keyframes scaleInY {
+    0% { 
+        opacity: 0;
+        transform: scaleY(0);
+    }
+    100% {
+        opacity: 1;
+        transform: scaleY(1);
+    }
+}
+
+@keyframes scaleOutY {
+    0% {
+        opacity: 1;
+        transform: scaleY(1);
+    }
+    100% {
+        opacity: 0;
+        transform: scaleY(0);
+    }
+}
+
+.lightbox-open {
+    animation: scaleInY 0.7s ease forwards;
+}
+
+.lightbox-closed {
+    animation: scaleOutY 0.7s ease forwards;
 }
