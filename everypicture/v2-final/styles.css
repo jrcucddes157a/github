@@ -68,9 +68,17 @@ footer {
 }
 
 @keyframes blinking {
-    0% {opacity: 1;}
-    20% {opacity: 0;}
-    50% {opacity: 1;}
+    0% {
+        opacity: 1;
+    }
+
+    20% {
+        opacity: 0;
+    }
+
+    50% {
+        opacity: 1;
+    }
 }
 
 .popup {
@@ -104,7 +112,7 @@ audio {
     overflow-y: scroll;
     justify-content: end;
     scrollbar-width: thin;
-    scrollbar-color:#ced1d9 black;
+    scrollbar-color: #ced1d9 black;
     scroll-behavior: smooth;
     z-index: 2;
     box-shadow: 0px 0px 30px #00000080;
@@ -182,7 +190,8 @@ button {
     transition: width 0.1s ease-in;
 }
 
-.play, .pause {
+.play,
+.pause {
     background-color: #18181a;
 }
 
@@ -242,11 +251,16 @@ button {
     will-change: height;
 }
 
-#decade-popup .play, #decade-popup .pause, #decade-popup .volumetoggle, #decade-popup .musicplayer .songcredits a, #decade-popup .mute {
+#decade-popup .play,
+#decade-popup .pause,
+#decade-popup .volumetoggle,
+#decade-popup .musicplayer .songcredits a,
+#decade-popup .mute {
     color: magenta;
 }
 
-#decade-popup .progressbar, #decade-popup .volumebar {
+#decade-popup .progressbar,
+#decade-popup .volumebar {
     background-color: magenta;
 }
 
@@ -254,11 +268,16 @@ button {
     color: aqua;
 }
 
-#kabuto-popup .play, #kabuto-popup .pause, #kabuto-popup .volumetoggle, #kabuto-popup .songcredits a, #kabuto-popup .mute  {
+#kabuto-popup .play,
+#kabuto-popup .pause,
+#kabuto-popup .volumetoggle,
+#kabuto-popup .songcredits a,
+#kabuto-popup .mute {
     color: #1034ff;
 }
 
-#kabuto-popup .volumebar, #kabuto-popup .progressbar {
+#kabuto-popup .volumebar,
+#kabuto-popup .progressbar {
     background-color: #1034ff;
 }
 
@@ -266,11 +285,16 @@ button {
     color: aqua;
 }
 
-#drive-popup .play, #drive-popup .pause, #drive-popup .volumetoggle, #drive-popup .songcredits a, #drive-popup .mute {
+#drive-popup .play,
+#drive-popup .pause,
+#drive-popup .volumetoggle,
+#drive-popup .songcredits a,
+#drive-popup .mute {
     color: red;
 }
 
-#drive-popup .progressbar, #drive-popup .volumebar {
+#drive-popup .progressbar,
+#drive-popup .volumebar {
     background-color: red;
 }
 
@@ -284,7 +308,9 @@ button {
     z-index: 2;
 }
 
-section, h2, h3 {
+section,
+h2,
+h3 {
     padding-inline: 40px;
     line-height: 1.25rem;
     margin-bottom: 1.5rem;
@@ -305,24 +331,37 @@ h2:hover {
 }
 
 @keyframes JPfade {
-    from { opacity: 0;}
-    to {opacity: 1;}
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
 }
 
 @keyframes ENGfade {
-    from { opacity: 0;}
-    to {opacity: 1;}
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
 }
 
-#decade-popup h2, #decade-popup h4 {
+#decade-popup h2,
+#decade-popup h4 {
     color: magenta;
 }
 
-#kabuto-popup h2, #kabuto-popup h4 {
+#kabuto-popup h2,
+#kabuto-popup h4 {
     color: #1034ff;
 }
 
-#drive-popup h2, #drive-popup h4 {
+#drive-popup h2,
+#drive-popup h4 {
     color: red;
 }
 
@@ -336,14 +375,13 @@ h4 {
     margin-bottom: 0.75rem;
 }
 
-p
-
-.bio ul, .funfacts ul li {
+p .bio ul,
+.funfacts ul li {
     margin-bottom: 1rem;
 }
 
 .bio ul {
-    list-style-type:none;
+    list-style-type: none;
     padding-inline-start: 0;
 }
 
@@ -378,12 +416,16 @@ ul li ul li a:visited {
     width: 100%;
 }
 
-#kabutooverlay, #decadeoverlay, #driveoverlay {
+#kabutooverlay,
+#decadeoverlay,
+#driveoverlay {
     cursor: pointer;
     transition: opacity 0.25s ease-in-out;
 }
 
-#kabutooverlay:hover, #decadeoverlay:hover, #driveoverlay:hover {
+#kabutooverlay:hover,
+#decadeoverlay:hover,
+#driveoverlay:hover {
     opacity: 0;
 }
 
@@ -397,16 +439,25 @@ ul li ul li a:visited {
 }
 
 @keyframes h1fade {
-    0% {opacity: 1;}
-    50% {opacity: 0;}
-    100% {opacity: 1;}
+    0% {
+        opacity: 1;
+    }
+
+    50% {
+        opacity: 0;
+    }
+
+    100% {
+        opacity: 1;
+    }
 }
 
 @keyframes scaleInY {
-    0% { 
+    0% {
         opacity: 0;
         transform: scaleY(0);
     }
+
     100% {
         opacity: 1;
         transform: scaleY(1);
@@ -418,6 +469,7 @@ ul li ul li a:visited {
         opacity: 1;
         transform: scaleY(1);
     }
+
     100% {
         opacity: 0;
         transform: scaleY(0);
