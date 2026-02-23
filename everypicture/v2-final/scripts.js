@@ -166,7 +166,7 @@
 
             allClosed()
 
-            bg.style.transform = 'scale(3) translate(20%, -17%)'
+            bg.style.transform = 'scale(3) translate(21%, -15%)'
 
             allPopUps[1].style.display = 'flex'
         })
@@ -181,7 +181,7 @@
 
             allClosed()
 
-            bg.style.transform = 'scale(3.5) translate(-20%, -3%)'
+            bg.style.transform = 'scale(3.5) translate(-19%, -2%)'
 
             allPopUps[0].style.display = 'flex'
         })
@@ -196,7 +196,7 @@
 
             allClosed()
 
-            bg.style.transform = 'scale(4) translate(3%, -1%)'
+            bg.style.transform = 'scale(4) translate(5%, -1%)'
 
             allPopUps[2].style.display = 'flex'
         })

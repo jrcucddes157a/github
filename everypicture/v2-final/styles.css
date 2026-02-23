@@ -20,6 +20,7 @@ body {
     left: 0;
     transition: all 1s ease-out;
     transform: scale(1);
+    overflow: hidden;
 }
 
 main {
@@ -52,13 +53,13 @@ footer {
     text-align: center;
     font-style: italic;
     position: absolute;
-    top: 93%;
+    top: 90%;
     left: 50%;
     transform: translateX(-50%);
     color: white;
 
     background-color: #00000080;
-    padding: 10px;
+    padding: 25px;
     border-radius: 5px;
 }
 
@@ -103,11 +104,13 @@ audio {
     overflow-y: scroll;
     justify-content: end;
     scrollbar-width: thin;
-    scrollbar-color:#18181a #ced1d9  ;
+    scrollbar-color:#ced1d9 black;
     scroll-behavior: smooth;
     z-index: 2;
     box-shadow: 0px 0px 30px #00000080;
     transform-origin: top;
+    box-shadow: 0px 0px 60px rgba(0, 0, 0, 0.8);
+    border-radius: 5px;
 }
 
 .cross {
@@ -118,6 +121,10 @@ audio {
     display: flex;
     justify-self: end;
     cursor: pointer;
+}
+
+button {
+    border-radius: 5px;
 }
 
 .crossdiv {
@@ -423,4 +430,11 @@ ul li ul li a:visited {
 
 .lightbox-closed {
     animation: scaleOutY 0.7s ease forwards;
+}
+
+.riderlayer {
+    max-width: 800px;
+    height: auto;
+    border-radius: 5px;
+    box-shadow: 0 0 60px rgba(0, 0, 0, 0.5);
 }
