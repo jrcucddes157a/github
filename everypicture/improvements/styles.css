@@ -1,0 +1,528 @@
+* {
+    box-sizing: border-box;
+}
+
+img {
+    display: block;
+}
+
+/* End Reset */
+
+body {
+    font-family: "Noto Sans", "Noto Sans JP", sans-serif;
+}
+
+#bg {
+    z-index: -1;
+    width: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    transition: all 1s ease-out;
+    transform: scale(1);
+    overflow: hidden;
+}
+
+main {
+    position: relative;
+    height: 100vh;
+    overflow: hidden;
+}
+
+header {
+    text-transform: uppercase;
+    text-align: center;
+    position: absolute;
+    top: 0%;
+    left: 50%;
+    transform: translateX(-50%);
+    transition: all 0.3s ease;
+    z-index: 1;
+}
+
+#muteall {
+    white-space: nowrap;
+    text-align: center;
+    position: fixed;
+    width: 130px;
+    top: 1.5%;
+    left: 93%;
+    padding: 10px;
+    background-color: #ced1d9;
+    color: #18181a;
+    box-shadow: 0px 0px 30px rgba(0, 0, 0, 0.5);
+    z-index: 1;
+}
+
+@keyframes muteAllActive {
+    from {
+        background-color: #ced1d9;
+        color: #18181a;
+    }
+    to {
+        background-color: #18181a;
+        color: #ced1d9;
+    }
+}
+
+h1 {
+    color: white;
+    text-align: center;
+}
+
+.fade-out {
+    opacity: 0;
+}
+
+footer {
+    text-align: center;
+    font-style: italic;
+    position: absolute;
+    top: 90%;
+    left: 50%;
+    transform: translateX(-50%);
+    color: white;
+
+    background-color: #00000080;
+    padding: 25px;
+    border-radius: 5px;
+}
+
+#period {
+    animation: blinking 1s ease infinite;
+}
+
+@keyframes blinking {
+    0% {
+        opacity: 1;
+    }
+
+    20% {
+        opacity: 0;
+    }
+
+    50% {
+        opacity: 1;
+    }
+}
+
+.popup {
+    background-color: #ffffff00;
+    display: flex;
+    padding-inline: 50px;
+    justify-content: space-between;
+    align-items: center;
+    transform-origin: center;
+    position: relative;
+    top: 50%;
+    z-index: 2;
+    transition: all 0.5s ease;
+}
+
+audio {
+    width: 100%;
+    margin-bottom: 1rem;
+}
+
+#decade-op {
+    border-radius: 0;
+}
+
+.lightbox {
+    max-width: 45rem;
+    background-color: #18181a;
+    color: #ced1d9;
+    min-height: 50vh;
+    max-height: 85vh;
+    overflow-x: hidden;
+    overflow-y: scroll;
+    justify-content: end;
+    align-items: center;
+    scrollbar-width: thin;
+    scrollbar-color: #ced1d9 black;
+    scroll-behavior: smooth;
+    z-index: 2;
+    box-shadow: 0px 0px 30px #00000080;
+    box-shadow: 0px 0px 60px rgba(0, 0, 0, 0.8);
+    border-radius: 5px;
+}
+
+.cross {
+    background-color: #18181a;
+    border-style: ridge;
+    border-color: #ced1d9;
+    padding: 5px;
+    display: flex;
+    justify-self: end;
+    cursor: pointer;
+}
+
+button {
+    border-radius: 5px;
+}
+
+.crossdiv {
+    background-color: #18181a;
+    width: 100%;
+    position: sticky;
+    border-bottom: 1px solid #ced1d9;
+    top: 0;
+    z-index: 5;
+}
+
+.musicplayer {
+    background-color: black;
+    padding: 20px;
+    padding-bottom: 40px;
+}
+
+.songcredits {
+    padding-left: 0;
+    font-weight: 300;
+}
+
+.songcredits a {
+    cursor: pointer;
+    text-decoration: none;
+    transition: all 0.25s ease;
+}
+
+.songcredits a:hover {
+    color: aqua;
+}
+
+.functions {
+    display: flex;
+}
+
+.play-pause {
+    display: flex;
+    align-items: center;
+}
+
+.progresscontainer {
+    background-color: #2e2e32;
+    width: 100%;
+    height: 10px;
+    margin-inline: 25px;
+
+    display: flex;
+    align-self: center;
+    cursor: pointer;
+}
+
+.progressbar {
+    z-index: 5;
+    transition: width 0.1s ease-in;
+}
+
+.play,
+.pause {
+    background-color: #18181a;
+}
+
+.play {
+    font-size: 13pt;
+    padding: 9px;
+    align-items: center;
+    cursor: pointer;
+}
+
+.pause {
+    font-size: 23pt;
+    padding-inline: 8px;
+    padding-block: 1.5px;
+    cursor: pointer;
+}
+
+.volumecontainer {
+    padding: 0;
+    margin: 0;
+
+    display: flex;
+    align-items: center;
+
+    background-color: #2e2e32;
+    width: 5px;
+    height: 60px;
+
+    position: absolute;
+    top: 39.5%;
+    right: 10.75rem;
+}
+
+.volumetoggle {
+    background-color: #18181a;
+    cursor: pointer;
+}
+
+.mute {
+    background-color: #18181a;
+    margin-left: 10px;
+    cursor: pointer;
+    transition: color 0.1s ease;
+}
+
+#drive-popup .mute:hover {
+    color: white;
+}
+
+.volumebar {
+    width: 5px;
+    height: 60px;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    transition: height 0.2s ease;
+    will-change: height;
+}
+
+#decade-popup .play,
+#decade-popup .pause,
+#decade-popup .volumetoggle,
+#decade-popup .musicplayer .songcredits a,
+#decade-popup .mute {
+    color: magenta;
+}
+
+#decade-popup .progressbar,
+#decade-popup .volumebar {
+    background-color: magenta;
+}
+
+#decade-popup .songcredits a:hover {
+    color: aqua;
+}
+
+#kabuto-popup .play,
+#kabuto-popup .pause,
+#kabuto-popup .volumetoggle,
+#kabuto-popup .songcredits a,
+#kabuto-popup .mute {
+    color: #1034ff;
+}
+
+#kabuto-popup .volumebar,
+#kabuto-popup .progressbar {
+    background-color: #1034ff;
+}
+
+#kabuto-popup .songcredits a:hover {
+    color: aqua;
+}
+
+#drive-popup .play,
+#drive-popup .pause,
+#drive-popup .volumetoggle,
+#drive-popup .songcredits a,
+#drive-popup .mute {
+    color: red;
+}
+
+#drive-popup .progressbar,
+#drive-popup .volumebar {
+    background-color: red;
+}
+
+#drive-popup .songcredits a:hover {
+    color: aqua;
+}
+
+.layered-image {
+    justify-items: left;
+    box-shadow: 0 0 30px #00000080;
+    z-index: 2;
+    width: 33vw;
+    transform-origin: center;
+}
+
+section,
+h2,
+h3 {
+    padding-inline: 40px;
+    line-height: 1.25rem;
+    margin-bottom: 1.5rem;
+}
+
+section:last-of-type {
+    margin-bottom: 4rem;
+}
+
+h2 {
+    font-size: 21pt;
+    line-height: 1.75rem;
+    animation: ENGfade 0.5s ease forwards;
+}
+
+h2:hover {
+    animation: JPfade 0.5s ease;
+}
+
+@keyframes JPfade {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes ENGfade {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+#decade-popup h2,
+#decade-popup h4 {
+    color: magenta;
+}
+
+#kabuto-popup h2,
+#kabuto-popup h4 {
+    color: #1034ff;
+}
+
+#drive-popup h2,
+#drive-popup h4 {
+    color: red;
+}
+
+h3 {
+    font-style: italic;
+    font-weight: 600;
+}
+
+h4 {
+    font-size: 16pt;
+    margin-bottom: 0.75rem;
+}
+
+p .bio ul,
+.funfacts ul li {
+    margin-bottom: 1rem;
+}
+
+.bio ul {
+    list-style-type: none;
+    padding-inline-start: 0;
+}
+
+.bio ul li {
+    margin-bottom: 1rem;
+}
+
+ul li ul {
+    padding-inline-start: 20px;
+}
+
+ul li ul li a {
+    text-decoration: none;
+    color: aqua;
+    padding-inline: 2rem;
+}
+
+ul li ul li a:visited {
+    color: hotpink;
+}
+
+.lightbox-hero {
+    width: 100%;
+    padding: 0;
+    object-fit: cover;
+}
+
+.riderselect {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+}
+
+#kabutooverlay,
+#decadeoverlay,
+#driveoverlay {
+    cursor: pointer;
+    transition: opacity 0.25s ease-in-out;
+}
+
+#kabutooverlay:hover,
+#decadeoverlay:hover,
+#driveoverlay:hover {
+    opacity: 0;
+}
+
+.overlay-on {
+    opacity: 0.4;
+    filter: blur(10px);
+}
+
+.clicked {
+    opacity: 0;
+}
+
+@keyframes h1fade {
+    0% {
+        opacity: 1;
+    }
+
+    50% {
+        opacity: 0;
+    }
+
+    100% {
+        opacity: 1;
+    }
+}
+
+@keyframes scaleInY {
+    0% {
+        opacity: 0;
+        transform: scaleY(0);
+    }
+
+    100% {
+        opacity: 1;
+        transform: scaleY(1);
+    }
+}
+
+@keyframes scaleOutY {
+    0% {
+        opacity: 1;
+        transform: scaleY(1);
+    }
+
+    100% {
+        opacity: 0;
+        transform: scaleY(0);
+    }
+}
+
+.lightbox-open {
+    animation: scaleInY 0.5s ease forwards;
+    pointer-events: all;
+}
+
+.lightbox-closed {
+    display: flex;
+    animation: scaleOutY 0.5s ease forwards;
+    pointer-events: none;
+}
+
+.lightbox-closed-init {
+    animation: scaleOutY 0.05s forwards;
+}
+
+.riderlayer {
+    max-width: 100%;
+    height: auto;
+    border-radius: 5px;
+    box-shadow: 0 0 60px rgba(0, 0, 0, 0.5);
+    transform-origin: center;
+}
