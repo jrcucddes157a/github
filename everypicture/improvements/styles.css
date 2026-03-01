@@ -112,7 +112,6 @@ footer {
     padding-inline: 50px;
     justify-content: space-between;
     align-items: center;
-    transform-origin: center;
     position: relative;
     top: 50%;
     z-index: 2;
@@ -145,6 +144,7 @@ audio {
     box-shadow: 0px 0px 30px #00000080;
     box-shadow: 0px 0px 60px rgba(0, 0, 0, 0.8);
     border-radius: 5px;
+    transform: translateY(-50%);
 }
 
 .cross {
@@ -247,8 +247,8 @@ button {
     height: 60px;
 
     position: absolute;
-    top: 39.5%;
-    right: 10.75rem;
+    top: 40.5%;
+    right: 9.25rem;
 }
 
 .volumetoggle {
@@ -334,6 +334,7 @@ button {
     z-index: 2;
     width: 33vw;
     transform-origin: center;
+    transform: translateY(-44vh);
 }
 
 section,
@@ -524,5 +525,4 @@ ul li ul li a:visited {
     height: auto;
     border-radius: 5px;
     box-shadow: 0 0 60px rgba(0, 0, 0, 0.5);
-    transform-origin: center;
 }

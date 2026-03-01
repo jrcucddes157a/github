@@ -6,8 +6,6 @@
     // Variable Defining
     const allXButtons = document.querySelectorAll('.cross')
     const allPopUps = document.querySelectorAll('.popup')
-    const allLightboxes = document.querySelectorAll('.lightbox')
-    const allLayerImages = document.querySelectorAll('.layered-image')
 
     const header = document.querySelector('header')
     const h1 = document.querySelector('h1')
@@ -104,6 +102,12 @@
                 play[i].style.display = 'flex'
             })
 
+            if (song[i].muted) {
+                volumeContainer[i].style.right = '7.75rem'
+            } else {
+                volumeContainer[i].style.right = '9.25rem'
+            }
+
             mute[i].addEventListener('pointerdown', function () {
 
                 // Flips between T/F states on click
@@ -115,12 +119,14 @@
                     song[i].volume = volume
                     volumeBar[i].style.height = '0%'
                     mute[i].innerHTML = 'MUTED'
+                    volumeContainer[i].style.right = '7.75rem'
                 } else {
                     mute[i].style.backgroundColor = 'darkgray'
                     volume = 50
                     song[i].volume = volume / 100
                     volumeBar[i].style.height = `${volume}%`
                     mute[i].innerHTML = 'UNMUTED'
+                    volumeContainer[i].style.right = '9.25rem'
                 }
             })
 
@@ -219,8 +225,6 @@
             bg.style.transform = 'scale(3) translate(21%, -15%)'
 
             allPopUps[1].style.display = 'flex'
-            allLightboxes[1].style.transform = 'translateY(-50%)'
-            allLayerImages[1].style.transform = 'translateY(-45vh)'
             allPopUps[1].classList.add('lightbox-open')
         })
 
@@ -237,8 +241,6 @@
             bg.style.transform = 'scale(3.5) translate(-19%, -2%)'
 
             allPopUps[0].style.display = 'flex'
-            allLightboxes[0].style.transform = 'translateY(-50%)'
-            allLayerImages[0].style.transform = 'translateY(-45vh)'
             allPopUps[0].classList.add('lightbox-open')
         })
 
@@ -255,8 +257,6 @@
             bg.style.transform = 'scale(4) translate(5%, -1%)'
 
             allPopUps[2].style.display = 'flex'
-            allLightboxes[2].style.transform = 'translateY(-50%)'
-            allLayerImages[2].style.transform = 'translateY(-45vh)'
             allPopUps[2].classList.add('lightbox-open')
         })
     }
@@ -277,11 +277,8 @@
                     }
 
                     allPopUps[i].removeEventListener('animationend', endClose)
-                    allPopUps[i].style.transform = ''
                 })
-
                 
-
                 setTimeout(function () {
                     for (let greens of allHitboxes) {
                         greens.classList.remove('clicked')
