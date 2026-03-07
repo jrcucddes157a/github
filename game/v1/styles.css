@@ -1,0 +1,9 @@
+* {
+    box-sizing: border-box;
+}
+
+img {
+    display: block;
+}
+
+/* End Reset */

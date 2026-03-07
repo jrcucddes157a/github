@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+     <!--Normalize CSS-->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css" rel="stylesheet">
+    <!--Google Fonts-->
+
+    <!-- Personal CSS -->
+    <link rel="stylesheet" href="styles.css">
+    <!-- Javascript -->
+    <script src="scripts.js" defer></script>
+    <title>戦闘の時</title>
+</head>
+<body>
+    <header>
+        <h1>戦闘の時</h1>
+        <button>MUTE ALL SOUND</button>
+        <button>QUIT</button>
+    </header>
+    <main>
+        <section id="titlescreen">
+            <button>START</button>
+            <button>HOW TO PLAY</button>
+            <img src="" alt="">
+        </section>
+
+        <section id="howto">
+            <div id="howtobuttons">
+                <button>BACK TO TITLE</button>
+                <button>START</button>
+            </div>
+        </section>
+
+        <section id="play">
+            <div id="p1healthbarcontainer">
+                <div id="p1health"></div>
+                <p>PLAYER 1 HP: <span id="p1hpnum"></span></p>
+            </div>
+
+            <div id="p2healthbarcontainer">
+                <div id="p2health"></div>
+                <p>PLAYER 2 HP: <span id="p2hpnum"></span></p>
+            </div>
+
+            <div id="buttons">
+                <div id="attack">
+                    <button>ROLL</button>
+                    <button>ATTACK</button>
+                </div>
+
+                <div id="heal">
+                    <button>HEAL</button>
+                    <div class="dot"></div>
+                    <div class="dot"></div>
+                    <div class="dot"></div>
+                </div>
+
+                <button>USE CARD</button>
+            </div>
+
+            <div id="p1dice"></div>
+            <div id="p2dice"></div>
+
+            <div id="p1card">
+                <img src="" alt="" id="p1back">
+                <img src="" alt="" id="p1front">
+            </div>
+
+            <div id="p2card">
+                <img src="" alt="" id="p2back">
+                <img src="" alt="" id="p2front">
+            </div>
+
+            <div id="player1">
+                <p>PLAYER 1</p>
+                <img src="" alt="" id="p1sprite">
+            </div>
+
+            <div id="player2">
+                <p>PLAYER 2</p>
+                <img src="" alt="" id="p2sprite">
+            </div>
+        </section>
+
+        <section id="p1win"></section>
+
+        <section id="p2win"></section>
+    </main>
+    <footer>
+        made by jordan crooks.
+    </footer>
+</body>
+</html>
