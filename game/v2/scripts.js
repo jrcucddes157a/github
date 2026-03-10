@@ -292,11 +292,22 @@
         game.cards = []
 
         //Adds Cards to Deck of 52
-        game.cards.push('G', 'G') //God card - 5% chance pull [ULTRA RARE]
-        game.cards.push('JO', 'JO', 'JO', 'JO') //Joker card - 8% chance pull [VERY RARE]
-        game.cards.push('K', 'K', 'K', 'K', 'K', 'K') //King card - 10% pull [RARE]
-        game.cards.push('Q', 'Q', 'Q', 'Q', 'Q', 'Q', 'Q', 'Q', 'Q', 'Q', 'Q', 'Q', 'Q', 'Q', 'Q', 'Q', 'Q', 'Q', 'Q', 'Q', 'Q', 'Q', 'Q', 'Q') //Queen card - 38.5% chance pull [COMMON]
-        game.cards.push('JA', 'JA', 'JA', 'JA', 'JA', 'JA', 'JA', 'JA', 'JA', 'JA', 'JA', 'JA', 'JA', 'JA', 'JA', 'JA', 'JA', 'JA', 'JA', 'JA') //Jack card - 38.5% chance pull [COMMON]
+        for (let i = 0; i < 2; i++) {
+            game.cards.push('G') //God card - 5% chance pull [ULTRA RARE]
+        }
+        
+        for (let i = 0; i < 4; i++) {
+            game.cards.push('JO') //Joker card - 8% chance pull [VERY RARE]
+        }
+
+        for (let i = 0; i < 6; i++) {
+            game.cards.push('K') //King card - 10% pull [RARE]
+        }
+
+        for (let i = 0; i < 20; i++) {
+            game.cards.push('Q') //Queen card - 38.5% chance pull [COMMON]
+            game.cards.push('JA') //Jack card - 38.5% chance pull [COMMON]
+        }
 
         shuffleDeck(game.cards)
 
