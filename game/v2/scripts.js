@@ -5,11 +5,6 @@
 
     // Functions to Implement:
     // 1. Card Functions with...
-        // Probability of picks
-            // Common: jack, queen
-            // Rare: King
-            // Very Rare: Joker
-            // Extremely Rare: God
         // Shuffle on start
         // Face Down Deal on start
         // Use Card function with effects and timing
@@ -24,6 +19,7 @@
     const crossBtn = document.querySelector('#cross')
     const backToGameBtn = document.querySelector('.backtogame')
 
+    let swap
 
     const howToPlaySect = document.querySelector('#howto')
     const p1Win = document.querySelector('#p1win')
@@ -298,21 +294,31 @@
         //Adds Cards to Deck of 52
         game.cards.push('G', 'G') //God card - 5% chance pull [ULTRA RARE]
         game.cards.push('JO', 'JO', 'JO', 'JO') //Joker card - 8% chance pull [VERY RARE]
-        game.cards.push('K', 'K', 'K', 'K', 'K') //King card - 10% pull [RARE]
+        game.cards.push('K', 'K', 'K', 'K', 'K', 'K') //King card - 10% pull [RARE]
         game.cards.push('Q', 'Q', 'Q', 'Q', 'Q', 'Q', 'Q', 'Q', 'Q', 'Q', 'Q', 'Q', 'Q', 'Q', 'Q', 'Q', 'Q', 'Q', 'Q', 'Q', 'Q', 'Q', 'Q', 'Q') //Queen card - 38.5% chance pull [COMMON]
         game.cards.push('JA', 'JA', 'JA', 'JA', 'JA', 'JA', 'JA', 'JA', 'JA', 'JA', 'JA', 'JA', 'JA', 'JA', 'JA', 'JA', 'JA', 'JA', 'JA', 'JA') //Jack card - 38.5% chance pull [COMMON]
 
         shuffleDeck(game.cards)
 
         console.log(game.cards)
+
+        dealCard()
+    }
+
+    function dealCard() {
+        game.p1card = game.cards[Math.floor(Math.random * game.cards.length) - 1]
+        game.p2card = game.cards[Math.floor(Math.random * game.cards.length) - 1]
+        console.log(game.p1card, game.p2card)
     }
 
 
     function shuffleDeck(array) {
         for (let i = 0; i < array.length; i++) {
-            const swap = Math.floor(Math.random() * (i + 1))
+            swap = Math.floor(Math.random() * (i + 1))
+            let prev = array[i]
 
-            array[i, swap] = array[swap, i]
+            array[i] = array[swap]
+            array[swap] = prev
         }
 
         return array
