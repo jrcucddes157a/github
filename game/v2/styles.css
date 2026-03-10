@@ -19,7 +19,11 @@ html  {
     height: 100vh;
 }
 
-#titlescreen {
+#p1win {
+    display: none;
+}
+
+#p2win {
     display: none;
 }
 

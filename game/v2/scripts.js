@@ -17,14 +17,16 @@
 
     // 2. Win Conditions and Screens
 
-    const rollBtn = document.querySelector('#roll')
+    const rollBtn = document.querySelector('#rollcontainer #roll')
     const attackBtn = document.querySelector('#attack')
-    const restartBtn = document.querySelector('#restart')
+    const restartBtn = document.querySelectorAll('.restart')
     const howToPlayBtn = document.querySelector('#howtoplay')
     const crossBtn = document.querySelector('#cross')
     const backToGameBtn = document.querySelector('.backtogame')
 
     const howToPlaySect = document.querySelector('#howto')
+    const p1Win = document.querySelector('#p1win')
+    const p2Win = document.querySelector('#p2win')
 
     const healBtn = document.querySelector('#heal')
     const p1Dice = document.querySelector('#p1dice')
@@ -133,6 +135,11 @@
         game.rollTotal1 = 0
         game.rollTotal2 = 0
         game.rollTotal3 = 0
+        rollBtn.disabled = false
+        healBtn.disabled = false
+        attackBtn.disabled = false
+        p1Win.style.display = 'none'
+        p2Win.style.display = 'none'
         updateHPBars()
         updateHealUI()
         updateTurnUI()
@@ -140,10 +147,10 @@
 
     attackBtn.addEventListener('pointerdown', attack)
     healBtn.addEventListener('pointerdown', heal)
-    restartBtn.addEventListener('pointerdown', function() {
-        console.log('restart pushed')
-        restart()
-    })
+    
+    for (let i = 0; i < restartBtn.length; i++) {
+        restartBtn[i].addEventListener('pointerdown', restart)
+    }
 
     rollBtn.addEventListener('pointerdown', function () {
         game.dieRollNum++
@@ -201,11 +208,19 @@
             console.log('Player 1 attacks! Damage:' + game.p1attack)
             game.p2health -= game.p1attack
             console.log('Player 2 Health: ' + game.p2health)
+
+            if (game.p2health <= 0) {
+                p1Win.style.display = 'block'
+            }
         } else {
             game.p2attack = game.rollTotal1 + game.rollTotal2 + game.rollTotal3
             console.log('Player 2 attacks! Damage:' + game.p2attack)
             game.p1health -= game.p2attack
             console.log('Player 1 Health: ' + game.p1health)  
+
+            if (game.p1health <= 0) {
+                p2Win.style.display = 'block'
+            }
         }
 
         //Changes turn and resets values for next player
