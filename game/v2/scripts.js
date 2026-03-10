@@ -18,6 +18,7 @@
     const howToPlayBtn = document.querySelector('#howtoplay')
     const crossBtn = document.querySelector('#cross')
     const backToGameBtn = document.querySelector('.backtogame')
+    const useCardBtn = document.querySelector('#usecard')
 
     let swap
 
@@ -181,6 +182,46 @@
     backToGameBtn.addEventListener('pointerdown', hideHowTo)
     crossBtn.addEventListener('pointerdown', hideHowTo)
 
+    useCardBtn.addEventListener('pointerdown', function() {
+        //Checks what card it has and applies effect
+
+        if (game.playerTurn) {
+            if (game.p1card === 'JA') {
+                //Doubles first roll; Jack
+                if (game.playerTurn === true) {
+                    game.rollTotal1 += game.rollTotal1
+                }
+                console.log(game.rollTotal1)
+                console.log('p1 got jack')
+            } else if (game.p1card === 'JO') {
+                //Swaps HP; Joker
+                game.p1health = game.p2health
+                game.p2health = game.p1health
+                updateHPBars()
+                console.log('p1 got joker')
+            } else if (game.p1card === 'Q') {
+                // Halves damage on next player's turn; Queen
+                if (game.playerTurn === false) {
+                    game.p2attack = Math.round(game.p2attack / 2)
+                }
+                console.log('p1 got queen')
+            } else if (game.p1card === 'K') {
+                //Rolls 4 die instead of 2 for all rolls on current turn; King
+            } else if (game.p1card === 'G') {
+                //Instant attack that is 25% of health; God card
+                console.log('p1 got god')
+                game.p1attack = game.p1health * 0.25
+                game.p2health -= game.p1attack
+                updateHPBars()
+            }
+
+            console.log('card used')
+            game.p1card = ''
+            console.log('card gone')
+        }
+        switchTurn()
+    })
+
     function dieRoll() {
         game.roll1 = Math.floor(Math.random() * 6) + 1
         game.roll2 = Math.floor(Math.random() * 6) + 1
@@ -317,8 +358,8 @@
     }
 
     function dealCard() {
-        game.p1card = game.cards[Math.floor(Math.random * game.cards.length) - 1]
-        game.p2card = game.cards[Math.floor(Math.random * game.cards.length) - 1]
+        game.p1card = game.cards[Math.floor(Math.random() * game.cards.length) - 1]
+        game.p2card = game.cards[Math.floor(Math.random() * game.cards.length) - 1]
         console.log(game.p1card, game.p2card)
     }
 
