@@ -39,6 +39,39 @@
         p2HPBar.style.width = `${(game.p2health / 500) * 100}%`
     }
 
+    function updateHealUI() {
+        const dotUI = document.querySelectorAll('.dot')
+        const heals = game.playerTurn ? game.p1heals : game.p2heals
+
+        if (heals <= 0) {
+            healBtn.disabled = true
+        }
+
+        for (let i = 0; i < dotUI.length; i++) {
+            if (i < heals) {
+                dotUI[i].classList.add('dot-active')
+            } else {
+                dotUI[i].classList.remove('dot-active')
+            }
+        }
+
+    }
+
+    function updateTurnUI() {
+        const p1Text = document.querySelector('#p1text')
+        const p2Text = document.querySelector('#p2text')
+
+        if (game.playerTurn) {
+            p1Text.style.color = 'gold'
+            p2Text.style.color = 'black'
+        } else {
+            p1Text.style.color = 'black'
+            p2Text.style.color = 'gold'
+        }
+    }
+
+    updateTurnUI()
+
     function switchTurn() {
         game.playerTurn = !game.playerTurn
         game.dieRollNum = 0
@@ -57,6 +90,8 @@
         } else {
             console.log('player 2 turn')
         }
+        updateTurnUI()
+        updateHealUI()
     }
 
     attackBtn.addEventListener('pointerdown', attack)
@@ -138,6 +173,12 @@
 
     function heal() {
         let heals = game.playerTurn ? game.p1heals : game.p2heals
+
+        if (heals <= 0) {
+            game.healAmount = 0
+            return
+        }
+
         heals--
 
         if (game.playerTurn) {
@@ -170,4 +211,7 @@
         switchTurn()
         console.log(game.playerTurn ? game.p1heals : game.p2heals)
     }
+
+    updateHPBars()
+    updateHealUI()
 })()

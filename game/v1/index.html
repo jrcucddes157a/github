@@ -22,12 +22,6 @@
         <h1>戦闘の時</h1>
     </header>
     <main>
-        <section id="titlescreen">
-            <button class="start">START</button>
-            <button id="howtoplay">HOW TO PLAY</button>
-            <img src="" alt="">
-        </section>
-
         <section id="howto">
             <div id="howtobuttons">
                 <button class="start">START</button>
@@ -37,8 +31,9 @@
 
         <section id="play">
             <div id="battleheader">
-                <button>MUTE ALL SOUND</button>
-                <button>QUIT</button>
+                <button id="mute">MUTE ALL SOUND</button>
+                <button id="howtoplay">HOW TO PLAY</button>
+                <button id="restart">RESTART</button>
             </div>
 
             <div class="healthbar" id="health1">
@@ -57,7 +52,14 @@
 
             <div id="buttons">
                 <div id="offense">
-                    <button id="roll">ROLL</button>
+                    <div id="rollcontainer">
+                        <div id="rollbarbox">
+                            <div id="rollbarcontainer">
+                                <div id="rollbar"></div>
+                            </div>
+                        </div>
+                        <button id="roll">ROLL</button>
+                    </div>
                     <button id="attack">ATTACK</button>
                 </div>
 
@@ -70,30 +72,32 @@
                     </div>
                 </div>
 
-                <button>USE CARD</button>
+                <button id="usecard">USE CARD</button>
             </div>
 
             <div id="p1dice"></div>
             <div id="p2dice"></div>
 
-            <div id="p1card">
-                <img src="" alt="" id="p1back">
-                <img src="" alt="" id="p1front">
-            </div>
+            <div id="cards">
+                <div id="p1card">
+                    <img src="images/cardback.png" alt="back of card" id="p1back">
+                    <img src="" alt="" id="p1front">
+                </div>
 
-            <div id="p2card">
-                <img src="" alt="" id="p2back">
-                <img src="" alt="" id="p2front">
+                <div id="p2card">
+                    <img src="images/cardback.png" alt="" id="p2back">
+                    <img src="" alt="" id="p2front">
+                </div>
             </div>
 
             <div id="players">
                 <div id="player1">
-                    <p>[PLAYER 1]</p>
+                    <p id="p1text">PLAYER 1</p>
                     <img src="" alt="" id="p1sprite">
                 </div>
 
                 <div id="player2">
-                    <p>[PLAYER 2]</p>
+                    <p id="p2text">PLAYER 2</p>
                     <img src="" alt="" id="p2sprite">
                 </div>
             </div>
