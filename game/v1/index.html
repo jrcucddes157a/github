@@ -7,7 +7,9 @@
     <!--Normalize CSS-->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css" rel="stylesheet">
     <!--Google Fonts-->
-
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DotGothic16&family=Jersey+10&display=swap" rel="stylesheet">
     <!-- Personal CSS -->
     <link rel="stylesheet" href="styles.css">
     <!-- Javascript -->
@@ -18,32 +20,35 @@
 <body>
     <header>
         <h1>戦闘の時</h1>
-        <button>MUTE ALL SOUND</button>
-        <button>QUIT</button>
     </header>
     <main>
         <section id="titlescreen">
-            <button>START</button>
-            <button>HOW TO PLAY</button>
+            <button class="start">START</button>
+            <button id="howtoplay">HOW TO PLAY</button>
             <img src="" alt="">
         </section>
 
         <section id="howto">
             <div id="howtobuttons">
-                <button>BACK TO TITLE</button>
-                <button>START</button>
+                <button class="start">START</button>
+                <button class="quit">BACK TO TITLE</button>
             </div>
         </section>
 
         <section id="play">
-            <div>
+            <div id="battleheader">
+                <button>MUTE ALL SOUND</button>
+                <button>QUIT</button>
+            </div>
+
+            <div class="healthbar" id="health1">
                 <div id="p1healthbarcontainer">
                     <div id="p1health"></div>
                 </div>
                 <p>PLAYER 1 HP: <span id="p1hpnum"></span></p>
             </div>
 
-            <div>
+            <div class="healthbar" id="health2">
                 <div id="p2healthbarcontainer">
                     <div id="p2health"></div>
                 </div>
@@ -81,14 +86,16 @@
                 <img src="" alt="" id="p2front">
             </div>
 
-            <div id="player1">
-                <p>PLAYER 1</p>
-                <img src="" alt="" id="p1sprite">
-            </div>
+            <div id="players">
+                <div id="player1">
+                    <p>[PLAYER 1]</p>
+                    <img src="" alt="" id="p1sprite">
+                </div>
 
-            <div id="player2">
-                <p>PLAYER 2</p>
-                <img src="" alt="" id="p2sprite">
+                <div id="player2">
+                    <p>[PLAYER 2]</p>
+                    <img src="" alt="" id="p2sprite">
+                </div>
             </div>
         </section>
 

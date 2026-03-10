@@ -8,6 +8,90 @@ img {
 
 /* End Reset~ */
 
+#titlescreen {
+    display: none;
+}
+
+#howto {
+    display: none;
+}
+
+h1 {
+    font-family: 'DotGothic16', sans-serif;
+    text-align: center;
+}
+
+header button, main, footer {
+    font-family: 'Jersey 10', sans-serif;
+    font-size: 20pt;
+}
+
+footer {
+    font-size: 16pt;
+}
+
+main {
+    margin: auto;
+    position: relative;
+}
+
+button {
+    text-align: center;
+    margin: auto;
+}
+
+header {
+    background-color: rgba(0, 0, 0, 0.5);
+    position: relative;
+    top: 0;
+    padding: 5px;
+    margin-bottom: 1rem;
+}
+
+header button {
+    flex-direction: row;
+}
+
+footer {
+    margin: auto;
+    margin-top: 5rem;
+    text-align: center;
+}
+
+#play button {
+    margin-block: 1rem;
+    display: flex;
+}
+
+#battleheader {
+    width: 20%;
+    margin: auto;
+    margin-bottom: 10rem;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+
+#buttons {
+    margin-top: 7rem;
+}
+
+#players {
+    font-size: 24pt;
+    padding-inline: 200px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.healthbar {
+    margin: auto;
+    width: 600px;
+    display: flex;
+    flex-direction: column;
+    justify-items: center;
+}
+
 #p1healthbarcontainer, #p2healthbarcontainer {
     display: block;
     background-color: rgb(50, 50, 50);
@@ -33,4 +117,17 @@ img {
 
 #p2hpnum {
     color: red;
+}
+
+#health1 {
+    margin-bottom: 2rem;
+}
+
+#health1 p {
+    text-align: right;
+    margin-top: 0.5rem;
+}
+
+#health2 p {
+    margin-top: 0.5rem;
 }
