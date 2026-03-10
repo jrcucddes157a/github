@@ -1,9 +1,10 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-     <!--Normalize CSS-->
+    <!--Normalize CSS-->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css" rel="stylesheet">
     <!--Google Fonts-->
 
@@ -13,6 +14,7 @@
     <script src="scripts.js" defer></script>
     <title>戦闘の時</title>
 </head>
+
 <body>
     <header>
         <h1>戦闘の時</h1>
@@ -34,27 +36,33 @@
         </section>
 
         <section id="play">
-            <div id="p1healthbarcontainer">
-                <div id="p1health"></div>
+            <div>
+                <div id="p1healthbarcontainer">
+                    <div id="p1health"></div>
+                </div>
                 <p>PLAYER 1 HP: <span id="p1hpnum"></span></p>
             </div>
 
-            <div id="p2healthbarcontainer">
-                <div id="p2health"></div>
+            <div>
+                <div id="p2healthbarcontainer">
+                    <div id="p2health"></div>
+                </div>
                 <p>PLAYER 2 HP: <span id="p2hpnum"></span></p>
             </div>
 
             <div id="buttons">
-                <div id="attack">
-                    <button>ROLL</button>
-                    <button>ATTACK</button>
+                <div id="offense">
+                    <button id="roll">ROLL</button>
+                    <button id="attack">ATTACK</button>
                 </div>
 
-                <div id="heal">
-                    <button>HEAL</button>
-                    <div class="dot"></div>
-                    <div class="dot"></div>
-                    <div class="dot"></div>
+                <div id="defense">
+                    <button id="heal">HEAL</button>
+                    <div id="dots">
+                        <div class="dot"></div>
+                        <div class="dot"></div>
+                        <div class="dot"></div>
+                    </div>
                 </div>
 
                 <button>USE CARD</button>
@@ -92,4 +100,5 @@
         made by jordan crooks.
     </footer>
 </body>
+
 </html>

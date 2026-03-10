@@ -7,3 +7,30 @@ img {
 }
 
 /* End Reset~ */
+
+#p1healthbarcontainer, #p2healthbarcontainer {
+    display: block;
+    background-color: rgb(50, 50, 50);
+    width: 600px;
+    height: 20px;
+}
+
+#p1health {
+    background-color: blue;
+    height: 20px;
+    width: 100%;
+}
+
+#p1hpnum {
+    color: blue;
+}
+
+#p2health {
+    background-color: red;
+    height: 20px;
+    width: 100%;
+}
+
+#p2hpnum {
+    color: red;
+}
