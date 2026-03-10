@@ -24,6 +24,7 @@
     const crossBtn = document.querySelector('#cross')
     const backToGameBtn = document.querySelector('.backtogame')
 
+
     const howToPlaySect = document.querySelector('#howto')
     const p1Win = document.querySelector('#p1win')
     const p2Win = document.querySelector('#p2win')
@@ -55,7 +56,12 @@
         p1heals: 3,
         p2heals: 3,
         healAmount: 0,
-        cards: []
+        cards: [],
+        p1card,
+        p1turns: 5,
+        p2card,
+        p2cards: 5,
+
     }
 
     p1HP.innerHTML = `${game.p1health}`
@@ -100,9 +106,13 @@
     }
 
     updateTurnUI()
+    cardDeck()
 
     function switchTurn() {
         game.playerTurn = !game.playerTurn
+        overburstFailText.style.opacity = '0'
+        rollBtn.disabled = false
+        rollBtn.innerHTML = 'ROLL'   
         game.dieRollNum = 0
         game.rollTotal1 = 0
         game.rollTotal2 = 0
@@ -110,9 +120,6 @@
         game.p1attack = 0
         game.p2attack = 0
         game.healAmount = 0
-        rollBtn.innerHTML = 'ROLL'
-        rollBtn.disabled = false
-        overburstFailText.style.display = 'none'
         console.log('player turn over')
 
         if (game.playerTurn) {
@@ -159,7 +166,7 @@
             dieRoll()
 
             if (game.dieRollNum === 2) {
-                rollBtn.innerHTML = 'OVERBURST'
+                rollBtn.innerHTML = 'OVERBURST!!'
             }
         } else if (game.dieRollNum === 3) {
             console.log('overburst on')
@@ -233,10 +240,10 @@
 
         if (game.rollTotal3 < 6) { 
             console.log('overburst failed, swapping turns')
-            switchTurn()
+            overburstFailText.style.opacity = '1'
+            setTimeout(switchTurn, 3000)
         } else {
             console.log('overburst successful, attack value added')
-            overburstFailText.style.display = 'block'
             console.log(game.rollTotal3)
         }
 
@@ -282,6 +289,33 @@
         updateHPBars()
         switchTurn()
         console.log(game.playerTurn ? game.p1heals : game.p2heals)
+    }
+
+    function cardDeck() {
+        //Resets Array before reinserting cards
+        game.cards = []
+
+        //Adds Cards to Deck of 52
+        game.cards.push('G', 'G') //God card - 5% chance pull [ULTRA RARE]
+        game.cards.push('JO', 'JO', 'JO', 'JO') //Joker card - 8% chance pull [VERY RARE]
+        game.cards.push('K', 'K', 'K', 'K', 'K') //King card - 10% pull [RARE]
+        game.cards.push('Q', 'Q', 'Q', 'Q', 'Q', 'Q', 'Q', 'Q', 'Q', 'Q', 'Q', 'Q', 'Q', 'Q', 'Q', 'Q', 'Q', 'Q', 'Q', 'Q', 'Q', 'Q', 'Q', 'Q') //Queen card - 38.5% chance pull [COMMON]
+        game.cards.push('JA', 'JA', 'JA', 'JA', 'JA', 'JA', 'JA', 'JA', 'JA', 'JA', 'JA', 'JA', 'JA', 'JA', 'JA', 'JA', 'JA', 'JA', 'JA', 'JA') //Jack card - 38.5% chance pull [COMMON]
+
+        shuffleDeck(game.cards)
+
+        console.log(game.cards)
+    }
+
+
+    function shuffleDeck(array) {
+        for (let i = 0; i < array.length; i++) {
+            const swap = Math.floor(Math.random() * (i + 1))
+
+            array[i, swap] = array[swap, i]
+        }
+
+        return array
     }
 
     updateHPBars()
