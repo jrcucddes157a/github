@@ -3,8 +3,28 @@
 
     console.log('reading js')
 
+    // Functions to Implement:
+    // 1. Card Functions with...
+        // Probability of picks
+            // Common: jack, queen
+            // Rare: King
+            // Very Rare: Joker
+            // Extremely Rare: God
+        // Shuffle on start
+        // Face Down Deal on start
+        // Use Card function with effects and timing
+        // Reshuffle and pull out card based on whether p1 or 2 has passed 5 of their own turns
+
+    // 2. Win Conditions and Screens
+
     const rollBtn = document.querySelector('#roll')
     const attackBtn = document.querySelector('#attack')
+    const restartBtn = document.querySelector('#restart')
+    const howToPlayBtn = document.querySelector('#howtoplay')
+    const crossBtn = document.querySelector('#cross')
+    const backToGameBtn = document.querySelector('.backtogame')
+
+    const howToPlaySect = document.querySelector('#howto')
 
     const healBtn = document.querySelector('#heal')
     const p1Dice = document.querySelector('#p1dice')
@@ -32,7 +52,8 @@
         playerTurn: true,
         p1heals: 3,
         p2heals: 3,
-        healAmount: 0
+        healAmount: 0,
+        cards: []
     }
 
     p1HP.innerHTML = `${game.p1health}`
@@ -40,7 +61,9 @@
 
     function updateHPBars() {
         p1HPBar.style.width = `${(game.p1health / 500) * 100}%`
+        p1HP.innerHTML = `${game.p1health}`
         p2HPBar.style.width = `${(game.p2health / 500) * 100}%`
+        p2HP.innerHTML = `${game.p2health}`
     }
 
     function updateHealUI() {
@@ -99,8 +122,28 @@
         updateHealUI()
     }
 
+    function restart() {
+        game.p1health = 500
+        game.p1heals = 3
+        game.p2health = 500
+        game.p2heals = 3
+        game.dieRollNum = 0
+        game.healAmount = 0
+        game.playerTurn = true
+        game.rollTotal1 = 0
+        game.rollTotal2 = 0
+        game.rollTotal3 = 0
+        updateHPBars()
+        updateHealUI()
+        updateTurnUI()
+    }
+
     attackBtn.addEventListener('pointerdown', attack)
     healBtn.addEventListener('pointerdown', heal)
+    restartBtn.addEventListener('pointerdown', function() {
+        console.log('restart pushed')
+        restart()
+    })
 
     rollBtn.addEventListener('pointerdown', function () {
         game.dieRollNum++
@@ -116,6 +159,17 @@
             overburst()
         }
     })
+
+    function hideHowTo() {
+        howToPlaySect.style.display = 'none'
+    }
+
+    howToPlayBtn.addEventListener('pointerdown', function() {
+        howToPlaySect.style.display = 'block'
+    })
+
+    backToGameBtn.addEventListener('pointerdown', hideHowTo)
+    crossBtn.addEventListener('pointerdown', hideHowTo)
 
     function dieRoll() {
         game.roll1 = Math.floor(Math.random() * 6) + 1
@@ -147,15 +201,11 @@
             console.log('Player 1 attacks! Damage:' + game.p1attack)
             game.p2health -= game.p1attack
             console.log('Player 2 Health: ' + game.p2health)
-
-            p2HP.innerHTML = `${game.p2health}`
         } else {
             game.p2attack = game.rollTotal1 + game.rollTotal2 + game.rollTotal3
             console.log('Player 2 attacks! Damage:' + game.p2attack)
             game.p1health -= game.p2attack
-            console.log('Player 1 Health: ' + game.p1health)
-
-            p1HP.innerHTML = `${game.p1health}`
+            console.log('Player 1 Health: ' + game.p1health)  
         }
 
         //Changes turn and resets values for next player

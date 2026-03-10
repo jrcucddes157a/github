@@ -23,9 +23,59 @@
     </header>
     <main>
         <section id="howto">
-            <div id="howtobuttons">
-                <button class="start">START</button>
-                <button class="quit">BACK TO TITLE</button>
+            <div id="crossbar">
+                <button id="cross">&#10060;</button>
+            </div>
+
+            <div id="howto-content">
+                <h2>How to Play</h2>
+
+                <h3>Basics</h3>
+                <p>Battle Time (戦闘の時) is a two player battle RPG game in which you and another player compete to see who
+                    can drain their opponent's HP to 0 first.</p>
+
+                <p>You have 3 different actions at your disposal: Attack, Healing, and Using a Card. Using any of these
+                    actions uses a turn and the next player goes.</p>
+
+                <h3>Turn Indication</h3>
+                <p>When it is your turn, your player number above your character will turn <span id="gold">gold</span>.
+                </p>
+
+                <h3>Rolling Dice</h3>
+                <p>In order to Attack or Heal, you must roll the dice to determine how much hit points (HP) you can
+                    either deplete from your opponent, or heal yourself with.</p>
+
+                <p>You can roll up to three times, with the third time entering <b>Overburst Mode</b>.</p>
+
+                <p>In <b>Overburst Mode</b>, your third roll has the potential to add the most damage to heal or attack
+                    with, but with a risky cost. If your rolls are not a 6 or higher, you will fail the Overburst and
+                    forfeit your turn, making you unable to attack, heal, or use a card.</p>
+
+                <h3>Healing</h3>
+                <p>To heal, you use the amount you roll the dice with. You have a <b>maximum</b> of <b>three heals</b>
+                    for the <b><i>entire game.</i></b> Be sure to use them wisely.</p>
+
+                <h3>Cards</h3>
+                <p>Cards are a literal "trump card" that can give you advantage in battle. You can use them at any time
+                    once. Your card is given to you face down and can be any of the following with the effects:</p>
+
+                <p>
+                <ul>
+                    <li>Joker: Swaps the HP values of yourself and your opponent.</li>
+                    <li>Jack: Doubles the value of your first roll on the next turn.</li>
+                    <li>Queen: Halves your opponent's attack on next turn.</li>
+                    <li>King: Lets you roll 4 dice for all 3 rolls on next turn.</li>
+                    <li>God: Deals an instant attack worth 25% of your current HP.</li>
+                </ul>
+                </p>
+
+                <p>Once used, your card is done after the turn usage end.</p>
+
+                <p>You will reshuffle and get a new card only after you have had 5 turns pass.</p>
+
+                <div id="howtobuttons">
+                    <button class="backtogame">BACK TO GAME</button>
+                </div>
             </div>
         </section>
 
