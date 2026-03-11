@@ -8,10 +8,6 @@ img {
 
 /* End Reset~ */
 
-/* Need Help with:
-- Back to Game button not centering
-- Cross button not going to end */
-
 html  {
     background: #44449c;
     background: linear-gradient(0deg, rgba(68, 68, 156, 1) 0%, rgba(53, 46, 103, 1) 50%, rgba(40, 34, 70, 1) 100%);
@@ -25,6 +21,34 @@ html  {
 
 #p2win {
     display: none;
+}
+
+#p1dice {
+    position: absolute;
+    left: 25%;
+    top: 90%;
+}
+
+#p2dice {
+    position: absolute;
+    left: 75%;
+    top: 90%;
+}
+
+#p1kingdice {
+    position: absolute;
+    top: 90%;
+    left: 30%;
+}
+
+#p2kingdice {
+    position: absolute;
+    top: 90%;
+    left: 70%;
+}
+
+#p1dice img, #p2dice img, #p1kingdice img, #p2kingdice img {
+    margin-bottom: 10px;
 }
 
 h1 {
@@ -63,14 +87,15 @@ header button {
     display: flex;
     justify-content: space-between;
     padding-inline: 50px;
-    margin-bottom: -25%;
+    margin-top: -2%;
+    margin-bottom: -26%;
 }
 
 footer {
     font-size: 16pt;
     color: white;
     margin: auto;
-    margin-top: 10rem;
+    margin-top: 13rem;
     text-align: center;
     opacity: 0.5;
     font-style: italic;
@@ -95,7 +120,7 @@ footer {
 }
 
 #buttons {
-    margin-top: 5rem;
+    margin-top: 7rem;
 }
 
 #roll {
@@ -163,7 +188,7 @@ footer {
     padding-inline: 100px;
     display: flex;
     justify-content: space-between;
-    margin-top: -20%;
+    margin-top: -23%;
     transition: all 0.5s ease;
 }
 
@@ -179,7 +204,7 @@ footer {
 #p1healthbarcontainer,
 #p2healthbarcontainer {
     display: block;
-    background-color: rgb(50, 50, 50);
+    background-color: black;
     width: 600px;
     height: 20px;
 }
