@@ -349,12 +349,29 @@ footer {
     height: 101vh;
 }
 
+#sources {
+    text-align: center;
+    font-family: 'DotGothic16', sans-serif;
+    width: 100%;
+    z-index: 5;
+    color: white;
+}
+
+a {
+    color: aqua;
+    text-decoration: none;
+}
+
+.backtogame a {
+    color: white;
+}
+
 #howto h2 {
     text-align: center;
 }
 
 #howto h3 {
-    color: aqua;
+    color: blueviolet;
     margin-top: 4rem;
 }
 
