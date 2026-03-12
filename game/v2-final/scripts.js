@@ -218,7 +218,8 @@
                 useCardBtn.disabled = false
                 game.p1turns = 5
                 shuffleDeck(game.cards)
-                dealP1Card()
+                resetCardVisuals()
+                setTimeout(dealP1Card, 500)
             }
         }
 
@@ -231,7 +232,8 @@
                 useCardBtn.disabled = false
                 game.p2turns = 5
                 shuffleDeck(game.cards)
-                dealP2Card()
+                resetCardVisuals()
+                setTimeout(dealP2Card,500)
             }
         }
 
