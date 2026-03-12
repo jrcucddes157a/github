@@ -213,6 +213,11 @@ footer {
     background-color: #5b1515;
 }
 
+#attack:disabled {
+    background-color: #3d0e0e;
+    color: rgb(111, 81, 7);
+}
+
 #buttons button {
     width: 100px;
     display: flex;

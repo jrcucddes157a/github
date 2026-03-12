@@ -69,8 +69,8 @@
         rollTotal3: 0,
         p1attack: 0,
         p2attack: 0,
-        p1health: 10,
-        p2health: 10,
+        p1health: 500,
+        p2health: 500,
         playerTurn: true,
         p1heals: 3,
         p2heals: 3,
@@ -97,16 +97,16 @@
     p1HP.innerHTML = `${game.p1health}`
     p2HP.innerHTML = `${game.p2health}`
 
-    muteBtn.addEventListener('pointerdown', function() {
+    muteBtn.addEventListener('pointerdown', function () {
         for (const sounds of allAudio) {
             sounds.muted = !sounds.muted
 
             if (sounds.muted) {
-            muteBtn.innerHTML = 'UNMUTE ALL SOUND'
-            muteBtn.style.color = 'gold'
-        } else {
-            muteBtn.innerHTML = 'MUTE ALL SOUND'
-        }
+                muteBtn.innerHTML = 'UNMUTE ALL SOUND'
+                muteBtn.style.color = 'gold'
+            } else {
+                muteBtn.innerHTML = 'MUTE ALL SOUND'
+            }
         }
     })
 
@@ -148,6 +148,19 @@
         }
     }
 
+    function resetCardVisuals() {
+        p1CardFront.style.opacity = '0'
+        p1CardFront.style.transform = 'rotateY(90deg)'
+        p1CardBack.style.transform = 'rotateY(0deg)'
+        p2CardFront.style.opacity = '0'
+        p2CardFront.style.transform = 'rotateY(90deg)'
+        p2CardBack.style.transform = 'rotateY(0deg)'
+        p1CardFront.src = ''
+        p1CardFront.alt = ''
+        p2CardFront.src = ''
+        p2CardFront.src = ''
+    }
+
     function applyPendingCardEffects() {
         //Ensures Card Effects only happen on next turn after switchTurn()
         game.kingMode = false
@@ -161,7 +174,7 @@
             }
         }
         else {
-            if(game.p2KingPending) {
+            if (game.p2KingPending) {
                 game.p2KingPending = false
                 game.kingMode = true
                 p2CardFront.style.opacity = '0'
@@ -182,6 +195,9 @@
         rollBtn.innerHTML = 'ROLL'
         rollBtn.style.color = 'black'
         rollBtn.style.backgroundColor = 'white'
+        attackBtn.disabled = false
+        healBtn.disabled = false
+        useCardBtn.disabled = false
         game.dieRollNum = 0
         game.rollTotal1 = 0
         game.rollTotal2 = 0
@@ -194,11 +210,14 @@
         const kingDiceDiv = game.playerTurn ? p1KingDice : p2KingDice
         kingDiceDiv.innerHTML = ''
 
+        // Card reshuffle counter only depletes turns on player who just finished
         if (game.playerTurn && game.didP1UseCard) {
+            useCardBtn.disabled = true
             game.p1turns--
 
             if (game.p1turns <= 0) {
                 game.didP1UseCard = false
+                useCardBtn.disabled = false
                 game.p1turns = 5
                 shuffleDeck(game.cards)
                 dealP1Card()
@@ -206,17 +225,18 @@
         }
 
         if (!game.playerTurn && game.didP2UseCard) {
+            useCardBtn.disabled = true
             game.p2turns--
 
             if (game.p2turns <= 0) {
                 game.didP2UseCard = false
+                useCardBtn.disabled = false
                 game.p2turns = 5
                 shuffleDeck(game.cards)
                 dealP2Card()
             }
         }
 
-        console.log('player turn over')
         updateTurnUI()
         updateHealUI()
         applyPendingCardEffects()
@@ -245,6 +265,8 @@
         game.p1turns = 5
         game.p2turns = 5
 
+        resetCardVisuals()
+
         rollBtn.disabled = false
         rollBtn.innerHTML = 'ROLL'
         rollBtn.style.color = 'black'
@@ -271,7 +293,7 @@
         updateHPBars()
         updateHealUI()
         updateTurnUI()
-        cardDeck()
+        setTimeout(cardDeck, 600)
     }
 
     attackBtn.addEventListener('pointerdown', attack)
@@ -282,7 +304,7 @@
     }
 
     rollBtn.addEventListener('pointerdown', function () {
-        diceRollSound.play()
+        diceRollSound.play().catch((function() {}))
         game.dieRollNum++
         console.log(`Roll Number: ${game.dieRollNum}`)
         if (game.dieRollNum <= 2) {
@@ -317,21 +339,28 @@
     crossBtn.addEventListener('pointerdown', hideHowTo)
 
     useCardBtn.addEventListener('pointerdown', function () {
-        dramaSound.play()
-        cardFlipSound.play()
+        if (useCardBtn.disabled) {
+            return
+        }
+
+        dramaSound.play().catch((function() {}))
+        cardFlipSound.play().catch((function() {}))
 
         //Checks what card it has and applies effect
         if (game.playerTurn) {
             if (game.p1card === 'JA') {
                 game.p1JackPending = true
-                console.log('Jack used - first roll doubled on NEXT turn')
             }
             else if (game.p1card === 'JO') {
+                //Joker card; swaps HP values
                 const p2HealthBefore = game.p2health
                 game.p2health = game.p1health
                 game.p1health = p2HealthBefore
                 updateHPBars()
-                console.log('Joker used - HP swapped')
+
+                setTimeout(function () {
+                    p1CardFront.style.opacity = '0'
+                }, 5000)
             }
             else if (game.p1card === 'Q') {
                 game.p2QueenEffectPending = true
@@ -342,19 +371,21 @@
                 game.p1attack = Math.round(game.p1health * 0.25)
                 game.p2health -= game.p1attack
                 updateHPBars()
+
+                setTimeout(function () {
+                    p1CardFront.style.opacity = '0'
+                }, 5000)
             }
 
             game.didP1UseCard = true
 
             p1CardBack.style.transform = 'rotateY(90deg)'
-            setTimeout(function() {
+            setTimeout(function () {
                 p1CardFront.style.transform = 'rotateY(0deg)'
+                p1CardFront.style.opacity = '1'
             }, 500)
 
-            console.log('card used')
             game.p1card = ''
-            console.log('card gone')
-            
         }
         else {
             if (game.p2card === 'JA') {
@@ -366,7 +397,10 @@
                 game.p1health = game.p2health
                 game.p2health = p1HealthBefore
                 updateHPBars()
-                console.log('Joker used - HP swapped')
+
+                setTimeout(function () {
+                    p2CardFront.style.opacity = '0'
+                }, 5000)
             }
             else if (game.p2card === 'Q') {
                 game.p1QueenEffectPending = true
@@ -377,24 +411,31 @@
                 game.p2attack = Math.round(game.p2health * 0.25)
                 game.p1health -= game.p2attack
                 updateHPBars()
+
+                setTimeout(function () {
+                    p2CardFront.style.opacity = '0'
+                }, 5000)
             }
 
             game.didP2UseCard = true
+     
 
             p2CardBack.style.transform = 'rotateY(90deg)'
-            setTimeout(function() {
+            setTimeout(function () {
                 p2CardFront.style.transform = 'rotateY(0deg)'
+                p2CardFront.style.opacity = '1'
             }, 500)
 
-            console.log('card used')
             game.p2card = ''
-            console.log('card gone')
         }
 
-        if ((game.didP1UseCard && game.playerTurn) || (!game.playerTurn && game.didP2UseCard)) {
-            useCardBtn.disabled = true
-        } else {
-            useCardBtn.disabled = false
+        //Prevents accidental turn forfeits after card has been used, revealed, and turn switched
+        if (game.playerTurn && game.didP1UseCard && useCardBtn.disabled === true) {
+            return
+        }
+
+        if (!game.playerTurn && game.didP2UseCard && useCardBtn.disabled === true) {
+            return
         }
 
         switchTurn()
@@ -430,9 +471,13 @@
     }
 
     function dieRoll() {
-        game.roll1 = Math.floor(Math.random() * 6) + 1
-        game.roll2 = Math.floor(Math.random() * 6) + 1
-        console.log(game.roll1, game.roll2)
+        if (rollBtn.disabled) {
+            return
+        } 
+        // game.roll1 = Math.floor(Math.random() * 6) + 1
+        // game.roll2 = Math.floor(Math.random() * 6) + 1
+        game.roll1 = 1
+        game.roll2 = 2
 
         const diceDiv = game.playerTurn ? p1Dice : p2Dice
         const kingDiceDiv = game.playerTurn ? p1KingDice : p2KingDice
@@ -464,7 +509,6 @@
             kingDiceDiv.innerHTML += `<img src="images/${game.diceImgs[game.roll1 - 1]}">`
             kingDiceDiv.innerHTML += `<img src="images/${game.diceImgs[game.roll2 - 1]}">`
             game.p1JackPending = false
-            console.log('jack effect applied: roll doubled')
             p1CardFront.style.opacity = '0'
         }
         else if (!game.playerTurn && game.p2JackPending && game.dieRollNum === 1) {
@@ -472,7 +516,6 @@
             kingDiceDiv.innerHTML += `<img src="images/${game.diceImgs[game.roll1 - 1]}">`
             kingDiceDiv.innerHTML += `<img src="images/${game.diceImgs[game.roll2 - 1]}">`
             game.p2JackPending = false
-            console.log('jack effect applied: roll doubled')
             p2CardFront.style.opacity = '0'
         }
     }
@@ -487,11 +530,23 @@
 
         if (game.rollTotal3 < 6) {
             overburstFailText.style.opacity = '1'
+            attackBtn.disabled = true
+            healBtn.disabled = true
+            useCardBtn.disabled = true
             setTimeout(switchTurn, 3000)
+
+            // Jack Overburst Bug stopping
+            if (game.playerTurn && game.p1JackPending) {
+                game.p1JackPending = false
+                p1CardFront.style.opacity = '0'
+            } else if (!game.playerTurn && game.p2JackPending) {
+                game.p2JackPending = false
+                p2CardFront.style.opacity = '0'
+            }
         } else {
             overburstFailText.innerHTML = 'OVERBURST SUCCESS!!'
             overburstFailText.style.color = 'green'
-            setTimeout(function() { overburstFailText.style.opacity = '1' }, 50)
+            setTimeout(function () { overburstFailText.style.opacity = '1' }, 50)
             console.log(game.rollTotal3)
         }
 
@@ -499,36 +554,50 @@
     }
 
     function attack() {
+        if (attackBtn.disabled) {
+            return
+        }
+
+        if (game.dieRollNum === 0) {
+            return
+        }
+
         let attackValue = game.rollTotal1 + game.rollTotal2 + game.rollTotal3
 
         if (game.playerTurn) {
+            //Prevents accidental turn forfeit
+            if (game.dieRollNum === 0) {
+                return
+            }
+
+
             //Queen Effect Check
             if (game.p1QueenEffectPending) {
                 attackValue = Math.round(attackValue / 2)
                 game.p1QueenEffectPending = false
-                p1CardFront.style.opacity = '0'
+                p2CardFront.style.opacity = '0'
             }
 
             game.p1attack = attackValue
             game.p2health -= game.p1attack
             p2Sprite.style.animation = 'p2TookDamage 0.3s ease'
-            p2Sprite.addEventListener('animationend', function(e) {
+            p2Sprite.addEventListener('animationend', function (e) {
                 if (e.animationName === 'p2TookDamage') {
                     p2Sprite.style.animation = ''
                 }
             })
-            
+
 
             // Win Condition
             if (game.p2health <= 0) {
-                deathSound.play()
+                deathSound.play().catch((function() {}))
                 healBtn.disabled = true
                 attackBtn.disabled = true
                 rollBtn.disabled = true
                 useCardBtn.disabled = true
                 p2Sprite.style.animation = 'p2death 2s ease forwards'
-                setTimeout(function() {
-                    victorySound.play()
+                setTimeout(function () {
+                    victorySound.play().catch((function() {}))
                     p1Win.style.display = 'block'
                 }, 3000)
             }
@@ -537,13 +606,13 @@
             if (game.p2QueenEffectPending) {
                 attackValue = Math.round(attackValue / 2)
                 game.p2QueenEffectPending = false
-                p2CardFront.style.opacity = '0'
+                p1CardFront.style.opacity = '0'
             }
 
             game.p2attack = attackValue
             game.p1health -= game.p2attack
             p1Sprite.style.animation = 'p1TookDamage 0.3s ease'
-            p1Sprite.addEventListener('animationend', function(e) {
+            p1Sprite.addEventListener('animationend', function (e) {
                 if (e.animationName === 'p1TookDamage') {
                     p1Sprite.style.animation = ''
                 }
@@ -551,28 +620,37 @@
 
             // Win Condition
             if (game.p1health <= 0) {
-                deathSound.play()
+                deathSound.play().catch((function() {}))
                 healBtn.disabled = true
                 attackBtn.disabled = true
                 rollBtn.disabled = true
                 useCardBtn.disabled = true
                 p1Sprite.style.animation = 'p1death 2s ease forwards'
-                setTimeout(function() {
-                    victorySound.play()
+                setTimeout(function () {
+                    victorySound.play().catch((function() {}))
                     p2Win.style.display = 'block'
                 }, 3000)
             }
         }
 
         //Changes turn and resets values for next player
-        attackSound.play()
+        attackSound.play().catch((function() {}))
         updateHPBars()
         switchTurn()
     }
 
 
     function heal() {
+        if (healBtn.disabled) {
+            return
+        }
+
         let heals = game.playerTurn ? game.p1heals : game.p2heals
+
+        //Prevents accidental turn forfeit and heal
+        if (game.dieRollNum === 0) {
+            return
+        }
 
         if (heals <= 0) {
             game.healAmount = 0
@@ -594,16 +672,16 @@
             game.p1health += game.healAmount
             p1HP.innerHTML = `${game.p1health}`
             p1Sprite.style.animation = 'heal 1s ease'
-            p1Sprite.addEventListener('animationend', function() {
+            p1Sprite.addEventListener('animationend', function (e) {
                 if (e.animationName === 'heal') {
                     p1Sprite.style.animation = ''
-                }    
+                }
             })
         } else {
             game.p2health += game.healAmount
             p2HP.innerHTML = `${game.p2health}`
             p2Sprite.style.animation = 'heal 1s ease'
-            p2Sprite.addEventListener('animationend', function(e) {
+            p2Sprite.addEventListener('animationend', function (e) {
                 if (e.animationName === 'heal') {
                     p2Sprite.style.animation = ''
                 }
@@ -619,7 +697,7 @@
         }
 
         // Changes turn and resets value for next player
-        healSound.play()
+        healSound.play().catch((function() {}))
         updateHPBars()
         switchTurn()
         console.log(game.playerTurn ? game.p1heals : game.p2heals)
@@ -656,10 +734,8 @@
     }
 
     function dealP1Card() {
-        dealSound.play()
-        p1CardFront.style.transform = 'rotateY(90deg)'
-        p1CardBack.style.transform = 'rotateY(0deg)'
-        game.p1card = 'Q'
+        dealSound.play().catch((function() {}))
+        game.p1card = game.cards[Math.floor(Math.random() * game.cards.length)]
 
         switch (game.p1card) {
             case 'JA':
@@ -684,17 +760,17 @@
                 break
         }
 
-        setTimeout(function() { p1CardFront.style.opacity = '1'}, 500)
-
-        console.log('P1: ' + game.p1card)
+        setTimeout(function() {
+            p1CardBack.style.transform = 'rotateY(0deg)'
+            p1CardFront.style.transform = 'rotateY(90deg)'
+            p1CardFront.style.opacity = '1'
+        }, 100)
     }
 
     function dealP2Card() {
-        dealSound.play()
-        p2CardFront.style.transform = 'rotateY(90deg)'
-        p2CardBack.style.transform = 'rotateY(0deg)'
+        dealSound.play().catch((function() {}))
         game.p2card = game.cards[Math.floor(Math.random() * game.cards.length)]
-        
+
         switch (game.p2card) {
             case 'JA':
                 p2CardFront.src = `images/${game.cardImgs[2]}`
@@ -718,11 +794,11 @@
                 break
         }
 
-        
-
-        setTimeout(function() { p2CardFront.style.opacity = '1'}, 500)
-
-        console.log('P2: ' + game.p2card)
+        setTimeout(function() {
+            p2CardBack.style.transform = 'rotateY(0deg)'
+            p2CardFront.style.transform = 'rotateY(90deg)'
+            p2CardFront.style.opacity = '1'
+        }, 100)
     }
 
     function shuffleDeck(array) {
