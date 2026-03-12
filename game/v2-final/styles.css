@@ -394,9 +394,14 @@ a {
     margin-block: 1rem;
 }
 
+#howto-content ul li {
+    margin-bottom: 3rem;
+}
+
 ul li {
     list-style: none;
     text-align: center;
+    margin-bottom: 1.75rem;
 }
 
 ul img {
@@ -420,14 +425,14 @@ ul img {
     background-color: rgb(27, 27, 27);
 }
 
-.backtogame {
+.backtogame, #sourcetogame {
     margin: auto;
     display: flex;
     justify-self: center;
     align-self: center;
     background-color: #0e0e0e;
     color: white;
-    padding: 5px;
+    padding: 10px;
 }
 
 #p1win,
