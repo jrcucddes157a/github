@@ -15,6 +15,10 @@ html  {
     height: 100vh;
 }
 
+body {
+    overflow: hidden;
+}
+
 #p1win {
     display: none;
 }
@@ -91,11 +95,22 @@ header button {
     margin-bottom: -26%;
 }
 
+#p1back, #p2back {
+    transition: all 0.5s ease;
+}
+
+#p1front, #p2front {
+    transition: all 0.5s ease;
+    transform: rotateY(90deg);
+    position: absolute;
+    top: 0;
+}
+
 footer {
     font-size: 16pt;
     color: white;
     margin: auto;
-    margin-top: 13rem;
+    margin-top: 14rem;
     text-align: center;
     opacity: 0.5;
     font-style: italic;
@@ -119,8 +134,30 @@ footer {
     text-align: center;
 }
 
+#battleheader button {
+    width: 170px;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+}
+
+#mute, #howtoplay, .restart {
+    background-color: #0e0e0e;
+    color: white;
+}
+
+.backtogame {
+    font-family: 'Jersey 10';
+    font-size: 20pt;
+    padding: 5px;
+}
+
 #buttons {
     margin-top: 7rem;
+}
+
+#buttons button {
+    padding: 7px;
 }
 
 #roll {
@@ -188,8 +225,21 @@ footer {
     padding-inline: 100px;
     display: flex;
     justify-content: space-between;
-    margin-top: -23%;
+    margin-top: -27%;
     transition: all 0.5s ease;
+}
+
+#p1sprite, #p2sprite {
+    width: 17vw;
+    position: absolute;
+}
+
+#p1sprite {
+    left: 5%;
+}
+
+#p2sprite {
+    right: 5%;
 }
 
 .healthbar {
@@ -281,17 +331,26 @@ footer {
 
 #howto {
     display: none;
-
+    font-family: 'DotGothic16', sans-serif;
     position: absolute;
     width: 100%;
-    top: -23%;
+    top: -13%;
     left: 50%;
     transform: translate(-50%);
     z-index: 5;
     color: white;
-    background-color: rgba(0, 0, 0, 0.75);
+    background-color: rgba(0, 0, 0, 0.9);
     overflow: scroll;
     height: 101vh;
+}
+
+#howto h2 {
+    text-align: center;
+}
+
+#howto h3 {
+    color: aqua;
+    margin-top: 4rem;
 }
 
 #howto-content {
@@ -300,11 +359,27 @@ footer {
     padding-bottom: 35px;
 }
 
+#howto-content img {
+    margin: auto;
+    margin-block: 1rem;
+}
+
+ul li {
+    list-style: none;
+    text-align: center;
+}
+
+ul img {
+    margin: auto;
+    margin-bottom: 1rem;
+    width: 25%;
+}
+
 #crossbar {
     background-color: black;
-    padding: 5px;
+    padding: 0px;
     position: sticky;
-    margin: auto;
+    margin: 0;
     top: 0;
     text-align: end;
     padding-right: 15px;
@@ -322,4 +397,161 @@ footer {
     display: flex;
     justify-self: center;
     align-self: center;
+    background-color: #0e0e0e;
+    color: white;
+    padding: 5px;
+}
+
+#p1win, #p2win {
+    position: absolute;
+    top: -18%;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.9);
+    z-index: 5;
+}
+
+#p1winsprite, #p2winsprite {
+    margin: auto;
+    margin-bottom: 4rem;
+    animation: winDance 0.7s infinite ease;
+}
+
+#p1win button, #p2win button {
+    display: flex;
+    font-size: 24pt;
+    padding: 10px;
+    width: 150px;
+    justify-content: center;
+}
+
+#p1win h4 {
+    animation: p1win 0.7s infinite;
+}
+
+#p2win h4 {
+    animation: p2win 0.7s infinite;
+}
+
+h4 {
+    text-align: center;
+    font-size: 38pt;
+}
+
+.restart:hover {
+    color: gold;
+}
+
+#howtoplay:hover {
+    color: gold;
+}
+
+#mute:hover {
+    color: aqua;
+}
+
+@keyframes winDance {
+    0% {
+        transform: rotateZ(15deg);
+    }
+    50% {
+        transform: rotateZ(-15deg);
+    }
+    100% {
+        transform: rotateZ(15deg);
+    }
+}
+
+@keyframes p1win {
+    0% {
+        color: blue;
+    }
+    50% {
+        color: white;
+    }
+    100% {
+        color: blue;
+    }
+}
+
+@keyframes p2win {
+    0% {
+        color: red;
+    }
+    50% {
+        color: white;
+    }
+    100% {
+        color: red;
+    }
+}
+
+@keyframes p1TookDamage {
+    0% {
+        transform: translateX(0px);
+        filter: none;
+    }
+    50% {
+        transform: translateX(-20px);
+        filter: brightness(0) saturate(100%) invert(13%) sepia(90%) saturate(6709%) hue-rotate(359deg) brightness(106%) contrast(108%);
+    }
+    100% {
+        transform: translateX(0px);
+        filter: none;
+    }
+}
+
+@keyframes p2TookDamage {
+    0% {
+        transform: translateX(0px);
+        filter: none;
+    }
+    50% {
+        transform: translateX(20px);
+        filter: brightness(0) saturate(100%) invert(13%) sepia(90%) saturate(6709%) hue-rotate(359deg) brightness(106%) contrast(108%);
+    }
+    100% {
+        transform: translateX(0px);
+        filter: none;
+    }
+}
+
+@keyframes p2death {
+    from {
+        transform: rotateZ(0deg) translateY(0px) translateX(0px);
+        filter: none
+    }
+
+    to {
+        transform: rotateZ(90deg) translateX(40px) translateY(-70px);
+        filter: grayscale(100%);
+    }
+}
+
+@keyframes p1death {
+    from {
+        transform: rotateZ(0deg) translateY(0px) translateX(0px);
+        filter: none
+    }
+
+    to {
+        transform: rotateZ(-90deg) translateX(-40px) translateY(-70px);
+        filter: grayscale(100%);
+    }
+}
+
+@keyframes heal {
+    0% {
+        filter: none;
+        transform: translateY(0);
+    }
+
+    50% {
+        filter: brightness(0) saturate(100%) invert(60%) sepia(63%) saturate(2037%) hue-rotate(88deg) brightness(96%) contrast(107%) blur(1px);
+        transform: translateY(-15px);
+    }
+    100% {
+        filter: none;
+        transform: translateY(0);
+    }
 }

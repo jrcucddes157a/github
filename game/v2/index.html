@@ -19,7 +19,7 @@
 
 <body>
     <header>
-        <h1>戦闘の時</h1>
+        <h1>裁判の決闘</h1>
     </header>
     <main>
         <section id="howto">
@@ -31,29 +31,28 @@
                 <h2>How to Play</h2>
 
                 <h3>Basics</h3>
-                <p>Battle Time (戦闘の時) is a two player battle RPG game in which you and another player compete to see who
-                    can drain their opponent's HP to 0 first.</p>
+                <p>Battle Court (裁判の決闘) is a two player battle RPG game in which you and another player compete to see who can drain their opponent's HP to 0 first.</p>
 
-                <p>You have 3 different actions at your disposal: Attack, Healing, and Using a Card. Using any of these
-                    actions uses a turn and the next player goes.</p>
+                <img src="images/hpbars-tutorial.png" alt="screenshot of hp bars">
+
+                <p>You have 3 different actions at your disposal: Attack, Healing, and Using a Card. Using any of these actions uses a turn and the next player goes.</p>
 
                 <h3>Turn Indication</h3>
-                <p>When it is your turn, your player number above your character will turn <span id="gold">gold</span>.
-                </p>
+                <p>When it is your turn, your player number above your character will turn <span id="gold">gold</span>.</p>
+
+                <img src="" alt="screenshot of player turn and sprite">
 
                 <h3>Rolling Dice</h3>
-                <p>In order to Attack or Heal, you must roll the dice to determine how much hit points (HP) you can
-                    either deplete from your opponent, or heal yourself with.</p>
+                <p>In order to Attack or Heal, you must roll the dice to determine how much hit points (HP) you can either deplete from your opponent, or heal yourself with.</p>
 
                 <p>You can roll up to three times, with the third time entering <b>Overburst Mode</b>.</p>
 
-                <p>In <b>Overburst Mode</b>, your third roll has the potential to add the most damage to heal or attack
-                    with, but with a risky cost. If your rolls are not a 6 or higher, you will fail the Overburst and
-                    forfeit your turn, making you unable to attack, heal, or use a card.</p>
+                <img src="images/overburst-tutorial.png" alt="overburst mode">
+
+                <p>In <b>Overburst Mode</b>, your third roll has the potential to add the most damage to heal or attack with, but with a risky cost. If your rolls are not a 6 or higher, you will fail the Overburst and forfeit your turn, making you unable to attack, heal, or use a card.</p>
 
                 <h3>Healing</h3>
-                <p>To heal, you use the amount you roll the dice with. You have a <b>maximum</b> of <b>three heals</b>
-                    for the <b><i>entire game.</i></b> Be sure to use them wisely.</p>
+                <p>To heal, you use the amount you roll the dice with. You have a <i>maximum</i> of <i>three heals</i> for the <b><i>entire game.</i></b> Be sure to use them wisely.</p>
 
                 <h3>Cards</h3>
                 <p>Cards are a literal "trump card" that can give you advantage in battle. You can use them at any time
@@ -61,17 +60,26 @@
 
                 <p>
                 <ul>
-                    <li>Joker: Swaps the HP values of yourself and your opponent immediately.</li>
-                    <li>Jack: Doubles the value of your first roll on the next turn.</li>
-                    <li>Queen: Halves your opponent's attack on the next turn.</li>
-                    <li>King: Lets you roll 4 dice for all 3 rolls on the next turn.</li>
-                    <li>God: Deals an instant, immediate attack worth 25% of your current HP.</li>
+                    <img src="images/JO.png" alt="joker card">
+                    <li><b>JOKER</b><br>Swaps the HP values of yourself<br>and your opponent immediately.</li>
+                    <br>
+                    <img src="images/JA.png" alt="jack card">
+                    <li><b>JACK</b><br>Doubles the value of your first<br>roll on the next turn.</li>
+                    <br>
+                    <img src="images/Q.png" alt="queen card">
+                    <li><b>QUEEN</b><br>Halves your opponent's attack on the next turn.</li>
+                    <br>
+                    <img src="images/K.png" alt="king card">
+                    <li><b>KING</b><br>Lets you roll 4 dice for all<br>3 rolls on the next turn.</li>
+                    <br>
+                    <img src="images/G.png" alt="god card">
+                    <li><b>GOD</b><br>Deals an instant, immediate attack<br>worth 25% of your current HP.</li>
                 </ul>
                 </p>
 
-                <p>Once used, your card is done after the turn usage end.</p>
+                <p>Once used, your card will remain as long until the effect is done. After that, it will disappear.</p>
 
-                <p>You will reshuffle and get a new card only after you have had 5 turns pass.</p>
+                <p>You will get a new card only after you have had 5 turns of <i>your</i> plays pass.</p>
 
                 <div id="howtobuttons">
                     <button class="backtogame">BACK TO GAME</button>
@@ -83,12 +91,12 @@
             <div id="cards">
                 <div id="p1card">
                     <img src="images/cardback.png" alt="back of card" id="p1back">
-                    <img src="" alt="" id="p1front">
+                    <img src="images/frontplaceholder.png" alt="front of card" id="p1front">
                 </div>
 
                 <div id="p2card">
-                    <img src="images/cardback.png" alt="" id="p2back">
-                    <img src="" alt="" id="p2front">
+                    <img src="images/cardback.png" alt="back of card" id="p2back">
+                    <img src="images/frontplaceholder.png" alt="front of card" id="p2front">
                 </div>
             </div>
             
@@ -147,22 +155,35 @@
             <div id="players">
                 <div id="player1">
                     <p id="p1text">PLAYER 1</p>
-                    <img src="" alt="" id="p1sprite">
+                    <img src="images/p1.png" alt="player 1 blue knight" id="p1sprite">
                 </div>
 
                 <div id="player2">
                     <p id="p2text">PLAYER 2</p>
-                    <img src="" alt="" id="p2sprite">
+                    <img src="images/p2.png" alt="player 2 blue knight" id="p2sprite">
                 </div>
             </div>
+
+            <audio id="cardflip" src="sound/cardflip.mp3"></audio>
+            <audio id="diceroll" src="sound/dice.mp3"></audio>
+            <audio src="sound/attack.mp3" id="attackmp3"></audio>
+            <audio src="sound/die.mp3" id="die"></audio>
+            <audio id="healmp3" src="sound/heal.mp3"></audio>
+            <audio src="sound/deal.mp3" id="deal"></audio>
+            <audio src="sound/drama.mp3" id="drama"></audio>
+            <audio src="sound/win.mp3" id="victory"></audio>
         </section>
 
         <section id="p1win">
+            <h4>PLAYER 1 WINS!</h4>
+            <img src="images/p1.png" alt="player 1 blue knight" id="p1winsprite">
             <img src="" alt="">
             <button class="restart">RESTART</button>
         </section>
 
         <section id="p2win">
+            <h4>PLAYER 2 WINS!</h4>
+            <img src="images/p2.png" alt="player 2 blue knight" id="p2winsprite">
             <img src="" alt="">
             <button class="restart">RESTART</button>
         </section>
